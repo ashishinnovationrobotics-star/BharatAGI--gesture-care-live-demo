@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Admin - Bharat AGI 3026</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&display=swap" rel="stylesheet">
+<style>
+*{font-family:'Outfit',sans-serif;box-sizing:border-box}
+body{margin:0;background:#040b14;color:#e6f6ff}
+header{background:#091a26;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #143040}
+nav a{color:#8fe9e9;text-decoration:none;padding:6px 12px;border-radius:16px;border:1px solid #1a3d4a;margin-left:4px;font-size:13px;font-weight:700}
+nav a.active{background:#00d2d3;color:#021018}
+.card{background:#0c1a29;border:1px solid #143040;border-radius:16px;padding:20px;max-width:500px;margin:30px auto;text-align:center}
+input{width:100%;padding:10px;border-radius:10px;background:#081a2a;border:1px solid #143040;color:#e6f6ff;margin:6px 0}
+.btn{padding:10px 18px;border-radius:10px;border:none;font-weight:800;cursor:pointer;width:100%;margin-top:8px}
+.primary{background:#00d2d3;color:#021018}
+</style>
+</head><body>
+<header><div style="font-weight:800">BHARAT AGI 3026</div><nav><a href="index.html">Home</a><a href="gesture.html">Gesture</a><a href="bharatagi.html">Bharat AGI</a><a href="about.html">Developer</a><a class="active" href="admin.html">Admin</a></nav></header>
+<div class="card">
+<h2>🔐 Admin Login - Database Control</h2>
+<p style="font-size:11px;color:#7a9aaa">Only admin can clear Bharat AGI knowledge base. Not by anyone.</p>
+<div id="loginBox">
+<input id="adminUser" placeholder="Admin Username" value="admin"/>
+<input id="adminPass" type="password" placeholder="Password" value="bharatagi2026"/>
+<button class="btn primary" onclick="adminLogin()">Login</button>
+<p style="font-size:10px;color:#5a7a8a">Demo: admin / bharatagi2026</p>
+</div>
+<div id="panel" style="display:none">
+<div style="background:#0a2a1a;padding:10px;border-radius:8px;border:1px solid #1a4a1a">✅ Admin Logged In - Ashish</div>
+<div style="text-align:left;margin-top:12px">
+<div>Total Docs: <b id="count">0</b></div>
+<div>Size: <b id="size">0 KB</b></div>
+<button class="btn" style="background:#c0392b;color:white" onclick="clearDB()">🗑️ Clear All Knowledge Base</button>
+<button class="btn" style="background:#0a2233;border:1px solid #143040;color:#8fe9e9" onclick="exportData()">📤 Export JSON</button>
+<button class="btn" style="background:#0a2233;border:1px solid #143040;color:#8fe9e9" onclick="logout()">Logout</button>
+</div>
+</div>
+<div id="msg" style="margin-top:10px;font-size:12px;color:#ff6b6b"></div>
+</div>
+<script>
+function refresh(){let docs=JSON.parse(localStorage.getItem('bharatagi_docs')||'[]');document.getElementById('count').innerText=docs.length;document.getElementById('size').innerText=(new Blob([localStorage.getItem('bharatagi_docs')||'']).size/1024).toFixed(1)+' KB';}
+function adminLogin(){let u=document.getElementById('adminUser').value,p=document.getElementById('adminPass').value;if(u==='admin'&&p==='bharatagi2026'){document.getElementById('loginBox').style.display='none';document.getElementById('panel').style.display='block';refresh();}else{document.getElementById('msg').innerText='❌ Invalid credentials';}}
+function logout(){document.getElementById('loginBox').style.display='block';document.getElementById('panel').style.display='none';}
+function clearDB(){if(!confirm('Delete ALL? Admin only'))return;localStorage.removeItem('bharatagi_docs');refresh();alert('Cleared by Admin');}
+function exportData(){let data=localStorage.getItem('bharatagi_docs')||'[]';let blob=new Blob([data],{type:'application/json'});let url=URL.createObjectURL(blob);let a=document.createElement('a');a.href=url;a.download='bharatagi_knowledge.json';a.click();}
+refresh();
+</script>
+</body></html>
