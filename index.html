@@ -2,87 +2,192 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Bharat AGI 3026 - Real Sign Language AI</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&display=swap" rel="stylesheet">
+<title>Bharat AGI 3026 - Advanced Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1646424915/hands.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1640029074/camera_utils.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
 <style>
 *{font-family:'Outfit',sans-serif;box-sizing:border-box}
 body{margin:0;background:#eef7ff;color:#0a3d62}
-header{background:linear-gradient(90deg,#0a3d62,#00a8a8);color:white;padding:12px 18px;display:flex;justify-content:space-between}
-.main{max-width:1200px;margin:auto;padding:12px;display:grid;grid-template-columns:1.3fr 0.7fr;gap:12px}
-@media(max-width:900px){.main{grid-template-columns:1fr}}
-.card{background:white;border-radius:18px;padding:12px;border:1px solid #d8e8ec;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
-#video{width:100%;border-radius:14px;background:#000;transform:scaleX(-1);min-height:380px;object-fit:cover}
-#out{font-size:42px;font-weight:800;text-align:center;margin:10px 0;min-height:80px}
-#out small{display:block;font-size:16px;color:#5a8a8a;font-weight:600}
+header{background:linear-gradient(90deg,#0a3d62,#0891a0);color:white;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+nav button{padding:8px 14px;border-radius:20px;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.15);color:white;font-weight:700;cursor:pointer;margin-left:6px}
+nav button.active{background:white;color:#0a3d62}
+.page{display:none;max-width:1250px;margin:auto;padding:14px}
+.page.active{display:block}
+.card{background:white;border-radius:18px;padding:14px;border:1px solid #d8e8ec;box-shadow:0 6px 18px rgba(0,0,0,0.06);margin-bottom:12px}
+#video{width:100%;border-radius:14px;background:#000;transform:scaleX(-1);min-height:360px;object-fit:cover}
+#out{font-size:38px;font-weight:800;text-align:center;margin:10px 0;min-height:70px}
+#out small{display:block;font-size:15px;color:#5a8a8a}
+.grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:12px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
 .signGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.sItem{padding:8px;border-radius:10px;background:#f5fcfc;border:1px solid #d8e8ec;font-size:12px;text-align:center}
-.sItem.active{background:#00d2d3;color:#0a3d62;font-weight:800;transform:scale(1.05)}
-.lang{padding:7px 12px;border-radius:20px;border:1px solid #cfe3e3;background:white;cursor:pointer;font-weight:700;margin:2px}
+.sItem{padding:8px;border-radius:10px;background:#f5fcfc;border:1px solid #d8e8ec;font-size:11px;text-align:center}
+.sItem.active{background:#00d2d3;font-weight:800;transform:scale(1.05)}
+.lang{padding:6px 10px;border-radius:20px;border:1px solid #cfe3e3;background:white;cursor:pointer;font-weight:700;margin:3px;font-size:13px}
 .lang.active{background:#0a3d62;color:white}
-.videoWrap{position:relative;overflow:hidden;border-radius:14px}
-canvas#trail{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;transform:scaleX(-1)}
+.hero{background:linear-gradient(135deg,#0a3d62 0%,#0891a0 60%,#00d2d3 100%);color:white;border-radius:24px;padding:30px 20px;text-align:center}
+.btn{padding:12px 20px;border-radius:12px;border:none;font-weight:800;cursor:pointer}
+.primary{background:#0a3d62;color:white}
+.ghost{background:#eef6f7;border:1px solid #cde3e5;color:#0a3d62}
+input,textarea,select{width:100%;padding:10px;border-radius:10px;border:1px solid #cde3e5;margin:6px 0}
+.docItem{background:#f8fcfc;border:1px solid #d8e8ec;border-radius:12px;padding:10px;margin:6px 0;display:flex;justify-content:space-between;align-items:center}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1646424915/hands.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1640029074/camera_utils.min.js"></script>
 </head>
 <body>
 <header>
-<div><b>Bharat AGI 3026 x Gesture Care</b> • Real ISL/ASL AI • Motion + Static</div>
-<div style="font-size:11px">Expo Tank Finale 2026</div>
+<div style="font-weight:800">Bharat AGI 3026</div>
+<nav>
+<button class="active" onclick="showPage('home',this)">🏠 Home</button>
+<button onclick="showPage('gesture',this)">🖐️ Gesture Live Demo</button>
+<button onclick="showPage('bharatagi',this)">🧠 Bharat AGI Demo</button>
+<button onclick="showPage('admin',this)">🔐 Admin</button>
+</nav>
 </header>
-<div class="main">
+
+<div id="home" class="page active">
+<div class="hero">
+<h1 style="margin:0;font-size:38px">Bharat AGI 3026</h1>
+<p style="font-size:18px;margin:8px 0">India's First Offline, Multilingual, Assistive AGI for Gesture Care & Regional Voice</p>
+<div style="margin-top:16px">
+<button class="btn" style="background:white;color:#0a3d62;margin:4px" onclick="showPage('gesture',document.querySelectorAll('nav button')[1])">Try Live Gesture Demo →</button>
+<button class="btn" style="background:#00d2d3;color:#0a3d62;margin:4px" onclick="showPage('bharatagi',document.querySelectorAll('nav button')[2])">Try Bharat AGI Voice →</button>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:14px">
+<div class="card"><h3>🖐️ Gesture Care Module</h3><p style="font-size:13px">Real ISL/ASL recognition with motion AI. 13 signs, offline. Speaks in 15+ languages including Nagpuri.</p><button class="btn ghost" onclick="showPage('gesture',document.querySelectorAll('nav button')[1])">Open Live Demo</button></div>
+<div class="card"><h3>🧠 Bharat AGI Knowledge Voice</h3><p style="font-size:13px">Upload PDF/Word/Text - Bharat AGI reads and speaks in any regional language. Local storage, admin-only clear.</p><button class="btn ghost" onclick="showPage('bharatagi',document.querySelectorAll('nav button')[2])">Open AGI Demo</button></div>
+<div class="card"><h3>🔗 Smart Glove Future</h3><p style="font-size:13px">Same pipeline → Raspberry Pi → Haptic Glove. Future: Smart Piano Teaching Glove.</p></div>
+</div>
+</div>
+
+<div id="gesture" class="page">
+<div class="grid">
 <div class="card">
-<div style="display:flex;justify-content:space-between"><b>Live Camera Feed - Show ANY Sign</b><span id="fpsBadge" style="font-size:11px;background:#e0f5f5;padding:4px 8px;border-radius:8px">Detecting...</span></div>
-<div class="videoWrap"><video id="video" autoplay playsinline muted></video><canvas id="trail"></canvas></div>
-<div id="out">Start Camera & Show Sign Language <small>Try: A, B, C, L, Y, ILY, Open Palm, Fist, Wave</small></div>
+<div style="display:flex;justify-content:space-between"><b>Live Camera Feed - Real Sign Language</b><span id="fpsBadge" style="font-size:11px;background:#e0f5f5;padding:4px 8px;border-radius:8px">No hand - Show sign</span></div>
+<video id="video" autoplay playsinline muted></video>
+<div id="out">Start Camera & Show Sign Language <small>Try: HELLO (wave), YES (nod), I Love You</small></div>
 <div style="text-align:center">
-<button id="startBtn" onclick="startCam()" style="padding:12px 20px;border-radius:12px;background:#0a3d62;color:white;border:none;font-weight:800;cursor:pointer">Start Camera</button>
-<button onclick="speakLast()" style="padding:12px 16px;border-radius:12px;background:#eef6f7;border:1px solid #cde3e5;cursor:pointer">🔊 Repeat</button>
+<button id="startBtn" class="btn primary" onclick="startCam()">Start Camera</button>
+<button class="btn ghost" onclick="speakLast()">🔊 Repeat</button>
 </div>
 </div>
 <div class="card">
-<div>
-<button class="lang active" onclick="setLang('en',this)">English</button>
-<button class="lang" onclick="setLang('hi',this)">हिन्दी</button>
+<div style="display:flex;flex-wrap:wrap">
+<button class="lang active" onclick="setLang('hi',this)">हिन्दी</button>
+<button class="lang" onclick="setLang('nag',this)">नागपुरी</button>
 <button class="lang" onclick="setLang('bho',this)">भोजपुरी</button>
+<button class="lang" onclick="setLang('en',this)">English</button>
 <button class="lang" onclick="setLang('bn',this)">বাংলা</button>
+<button class="lang" onclick="setLang('mag',this)">मगही</button>
+<button class="lang" onclick="setLang('mai',this)">मैथिली</button>
 </div>
 <div style="background:#f2fbfb;padding:10px;border-radius:12px;margin:10px 0;border:1px solid #d4ecec">
-<div style="font-size:11px;opacity:0.6">DETECTED SIGN + TRANSLATION</div>
-<div id="signName" style="font-size:30px;font-weight:800">-</div>
-<div id="signMean" style="font-size:18px;color:#0891a0;font-weight:700">-</div>
-<div id="conf" style="font-size:12px">Confidence: - • Motion: -</div>
+<div id="signName" style="font-size:28px;font-weight:800">-</div>
+<div id="signMean" style="font-size:16px;color:#0891a0;font-weight:700">-</div>
+<div id="signFull" style="font-size:13px;color:#333;margin-top:4px;background:white;padding:6px;border-radius:8px">Full sentence will appear here</div>
+<div id="conf" style="font-size:11px;margin-top:4px">Confidence: -</div>
 </div>
-<div style="font-weight:800;margin:6px 0;font-size:13px">Real-Time Sign Dictionary (12 Signs)</div>
 <div class="signGrid" id="signGrid"></div>
-<div style="margin-top:12px;background:#fff8e6;padding:10px;border-radius:12px;border:1px solid #f0dca0">
-<h4 style="margin:0;font-size:13px">🔗 Raspberry Pi Glove Link</h4>
-<input id="piUrl" style="width:100%;padding:8px;border-radius:8px;border:1px solid #cde3e5;margin:6px 0" value="http://raspberrypi.local:5000"/>
-<div style="display:flex;gap:6px">
-<button style="flex:1;padding:10px;border-radius:8px;background:#0a3d62;color:white;border:none;font-weight:700;cursor:pointer" onclick="connectPi()">Connect Pi</button>
-<button style="flex:1;padding:10px;border-radius:8px;background:white;border:1px solid #cde3e5;cursor:pointer" onclick="testPi()">Test</button>
+<div style="margin-top:10px;background:#fff8e6;padding:8px;border-radius:10px;border:1px solid #f0dca0">
+<input id="piUrl" value="http://raspberrypi.local:5000"/><div style="display:flex;gap:6px"><button class="btn primary" style="flex:1" onclick="connectPi()">Connect Pi</button><button class="btn ghost" style="flex:1" onclick="testPi()">Test</button></div><div id="piStatus" style="font-size:11px;margin-top:4px">Status: Offline Demo Mode</div>
 </div>
-<div style="font-size:11px;margin-top:4px" id="piStatus">Status: Offline Demo - Phone vibrates</div>
-</div>
-<div style="margin-top:8px"><div style="font-size:12px;font-weight:700">History Log</div><div id="history" style="font-size:11px;max-height:80px;overflow:auto;background:#f8fcfc;padding:6px;border-radius:8px;margin-top:4px"></div></div>
+<div id="history" style="font-size:11px;max-height:90px;overflow:auto;background:#f8fcfc;padding:6px;border-radius:8px;margin-top:8px"></div>
 </div>
 </div>
+</div>
+
+<div id="bharatagi" class="page">
+<div class="grid">
+<div class="card">
+<h2 style="margin:0">🧠 Bharat AGI - Knowledge to Regional Voice</h2>
+<p style="font-size:12px;color:#666">Upload PDF, Word, Text file. Bharat AGI will store and speak in any language.</p>
+<div style="background:#f0faff;padding:12px;border-radius:12px;border:1px dashed #0a3d62">
+<input type="file" id="fileInput" accept=".pdf,.docx,.txt,.doc" onchange="handleFile(this)"/>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+<input id="docTitle" placeholder="Title - e.g., Swachh Bharat Abhiyan"/>
+<select id="docCat"><option>Education</option><option>Healthcare</option><option>Agriculture</option><option>Gesture Care</option><option>Culture</option></select>
+</div>
+<textarea id="docDesc" rows="5" placeholder="Description / Content"></textarea>
+<button class="btn primary" style="width:100%" onclick="saveDoc()">💾 Save to Knowledge Base</button>
+</div>
+<div style="margin-top:14px">
+<h3 style="margin:0">🔊 Speak in Any Language</h3>
+<div style="display:flex;flex-wrap:wrap;margin:8px 0">
+<button class="lang active" onclick="setAGILang('hi',this)">हिन्दी</button>
+<button class="lang" onclick="setAGILang('nag',this)">नागपुरी</button>
+<button class="lang" onclick="setAGILang('bho',this)">भोजपुरी</button>
+<button class="lang" onclick="setAGILang('en',this)">English</button>
+<button class="lang" onclick="setAGILang('bn',this)">বাংলা</button>
+<button class="lang" onclick="setAGILang('ta',this)">தமிழ்</button>
+<button class="lang" onclick="setAGILang('te',this)">తెలుగు</button>
+<button class="lang" onclick="setAGILang('mr',this)">मराठी</button>
+<button class="lang" onclick="setAGILang('es',this)">Español</button>
+<button class="lang" onclick="setAGILang('fr',this)">Français</button>
+<button class="lang" onclick="setAGILang('ar',this)">العربية</button>
+<button class="lang" onclick="setAGILang('ja',this)">日本語</button>
+<button class="lang" onclick="setAGILang('de',this)">Deutsch</button>
+</div>
+<select id="agiDocSelect"></select>
+<div style="background:#f2fbfb;padding:12px;border-radius:12px;margin-top:8px;border:1px solid #d4ecec">
+<div id="agiPreview" style="font-size:14px;min-height:60px">Select a document...</div>
+</div>
+<div style="display:flex;gap:6px;margin-top:8px">
+<button class="btn primary" style="flex:1" onclick="speakAGI()">🔊 Bharat AGI Speak in <span id="agiLangLabel">Hindi</span></button>
+<button class="btn ghost" style="flex:1" onclick="stopSpeak()">⏹️ Stop</button>
+</div>
+<div style="font-size:11px;margin-top:6px">Stored: <span id="agiCount">0</span> docs | <span id="agiVoiceStatus">Ready</span></div>
+</div>
+</div>
+<div class="card">
+<h3>📚 Knowledge Base (Local Storage)</h3>
+<div id="docList" style="max-height:600px;overflow:auto"></div>
+<div style="margin-top:10px;background:#fff0f0;padding:8px;border-radius:8px;font-size:11px">⚠️ Only Admin can clear database.</div>
+</div>
+</div>
+</div>
+
+<div id="admin" class="page">
+<div class="card" style="max-width:500px;margin:20px auto;text-align:center">
+<h2>🔐 Admin Login - Database Control</h2>
+<div id="adminLoginBox">
+<input id="adminUser" placeholder="Admin Username" value="admin"/>
+<input id="adminPass" type="password" placeholder="Password" value="bharatagi2026"/>
+<button class="btn primary" style="width:100%" onclick="adminLogin()">Login</button>
+<p style="font-size:11px;color:#666">Demo: admin / bharatagi2026</p>
+</div>
+<div id="adminPanel" style="display:none">
+<div style="background:#e6ffed;padding:12px;border-radius:10px">✅ Admin Logged In</div>
+<div style="margin-top:12px;text-align:left">
+<div>Total Docs: <b id="adminCount">0</b></div>
+<button class="btn" style="background:#c0392b;color:white;width:100%;margin-top:12px" onclick="clearDatabase()">🗑️ Clear All Knowledge Base</button>
+<button class="btn ghost" style="width:100%;margin-top:6px" onclick="exportData()">📤 Export JSON</button>
+<button class="btn ghost" style="width:100%;margin-top:6px" onclick="adminLogout()">Logout</button>
+</div>
+</div>
+<div id="adminMsg" style="margin-top:10px;font-size:12px;color:#c0392b"></div>
+</div>
+</div>
+
 <script>
-let currentLang='en', lastSign=null, piBase=null, historyArr=[], lastPositions=[], motionState="still";
+function showPage(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  if(id==='bharatagi') refreshDocs();
+}
 const signs={
-"A":{en:"A",hi:"ए",desc:"Fist thumb side",en_mean:"Letter A"},
-"B":{en:"B",hi:"बी",desc:"All fingers up",en_mean:"Letter B"},
-"C":{en:"C",hi:"सी",desc:"C shape curved",en_mean:"Letter C"},
-"L":{en:"L",hi:"एल",desc:"L shape",en_mean:"Letter L"},
-"Y":{en:"Y",hi:"वाई",desc:"Thumb + Pinky",en_mean:"Letter Y"},
-"ILY":{en:"I Love You",hi:"मैं तुमसे प्यार करता हूँ",bho:"हम तोहरा से प्यार करीलें",bn:"আমি তোমাকে ভালোবাসি",desc:"Index+Pinky+Thumb",en_mean:"I Love You"},
-"HELP":{en:"I need help",hi:"मुझे मदद चाहिए",bho:"हमरा मदद चाही",bn:"আমার সাহায্য দরকার",desc:"Open Palm",en_mean:"Help"},
-"WATER":{en:"I need water",hi:"मुझे पानी चाहिए",bho:"पानी चाही",bn:"আমার জল দরকার",desc:"Fist",en_mean:"Water"},
-"FOOD":{en:"I need food",hi:"मुझे खाना चाहिए",bho:"खाना चाही",bn:"আমার খাবার দরকার",desc:"Pinch / Two fingers",en_mean:"Food"},
-"THANK YOU":{en:"Thank You",hi:"धन्यवाद",bho:"धन्यवाद",bn:"ধন্যবাদ",desc:"Thumbs Up",en_mean:"Thank You"},
-"HELLO":{en:"Hello",hi:"नमस्ते",bho:"प्रणाम",bn:"নমস্কার",desc:"Waving Motion",en_mean:"Hello"},
-"YES":{en:"Yes",hi:"हाँ",bho:"हाँ",bn:"হ্যাঁ",desc:"Fist nod up-down",en_mean:"Yes"},
-"NO":{en:"No",hi:"नहीं",bho:"ना",bn:"না",desc:"Side shake / Scissor",en_mean:"No"}
+"A":{en:"A",hi:"ए - अ से अनार",nag:"ए - ए से आम",bho:"ए",full:{en:"This is letter A. A for Apple.",hi:"यह अक्षर ए है। ए से अनार होता है, कृपया ध्यान दीजिए।",nag:"इ ए हरके हेके। ए से आम लागेला, मोयँ के मदद चाही।",bho:"ई अक्षर ए हउवे। ए से अनार होला।"},desc:"Fist thumb side"},
+"ILY":{en:"I Love You",hi:"मैं तुमसे बहुत प्यार करता हूँ, धन्यवाद",nag:"मोय तोहरे से बहुत प्यार करहोना, जोहार",bho:"हम तोहरा से बहुत प्यार करीले, प्रणाम",full:{en:"I love you so much, thank you for your kindness.",hi:"मैं आपसे बहुत प्यार करता हूँ, आपकी दयालुता के लिए धन्यवाद।",nag:"मोय तोहरे से बहुत प्यार करहोना, तोहर दया खातिर जोहार।",bho:"हम तोहरा से बहुत प्यार करीले।"},desc:"Index+Pinky+Thumb"},
+"HELP":{en:"I need help",hi:"मुझे मदद चाहिए, कृपया मेरी सहायता कीजिए",nag:"मोयँ के मदद चाही, कृपया मोर मदद करद",bho:"हमरा मदद चाही, कृपया हमार मदद करीं",full:{en:"I need help urgently, please help me.",hi:"मुझे तुरंत मदद चाहिए, कृपया मेरी सहायता कीजिए।",nag:"मोयँ के तुरंत मदद चाही, कृपया मोर मदद करद।",bho:"हमरा तुरंत मदद चाही, कृपया हमार मदद करीं।"},desc:"Open Palm"},
+"WATER":{en:"I need water",hi:"मुझे पानी चाहिए, बहुत प्यास लगी है",nag:"मोयँ के पानी चाही, बहुत पियास लागल हे",bho:"हमरा पानी चाही, बहुत पियास लागल बा",full:{en:"I need water, I am very thirsty. Please give me water.",hi:"मुझे पानी चाहिए, मुझे बहुत प्यास लगी है। कृपया मुझे पानी दीजिए।",nag:"मोयँ के पानी चाही, मोय के बहुत पियास लागल हे। कृपया पानी देद।"},desc:"Fist"},
+"FOOD":{en:"I need food",hi:"मुझे खाना चाहिए, मुझे भूख लगी है",nag:"मोयँ के खाना चाही, मोय के भूख लागल हे",bho:"हमरा खाना चाही, भूख लागल बा",full:{en:"I need food, I am very hungry.",hi:"मुझे खाना चाहिए, मुझे बहुत भूख लगी है।",nag:"मोयँ के खाना चाही, मोय के बहुत भूख लागल हे।"},desc:"Pinch"},
+"THANK YOU":{en:"Thank You so much",hi:"आपका बहुत-बहुत धन्यवाद, दिल से शुक्रिया",nag:"तोहके बहुत-बहुत जोहार, दिल से धन्यवाद",bho:"तोहके बहुत-बहुत धन्यवाद",full:{en:"Thank you so much from the bottom of my heart.",hi:"आपका दिल से बहुत-बहुत धन्यवाद।",nag:"तोहके दिल से बहुत-बहुत जोहार।",bho:"तोहके दिल से बहुत धन्यवाद।"},desc:"Thumbs Up"},
+"HELLO":{en:"Hello, How are you?",hi:"नमस्ते, आप कैसे हैं? आपसे मिलकर खुशी हुई",nag:"जोहार, तोय कैसे हस? तोहसे मिलके खुशी लागल",bho:"प्रणाम, तू कैसे बाड़ा?",full:{en:"Hello, how are you? Nice to meet you.",hi:"नमस्ते, आप कैसे हैं? आपसे मिलकर बहुत खुशी हुई।",nag:"जोहार, तोय कैसे हस? तोहसे मिलके बहुत खुशी लागल।",bho:"प्रणाम, तू कैसे बाड़ा?"},desc:"Waving Motion"},
+"YES":{en:"Yes, I agree",hi:"हाँ, मैं सहमत हूँ, बिल्कुल ठीक है",nag:"हाँ, मोय सहमत हको, ठीक हेके",bho:"हाँ, हम सहमत बानी",full:{en:"Yes, I agree with you. That is absolutely correct.",hi:"हाँ, मैं आपसे सहमत हूँ। यह बिल्कुल सही है।",nag:"हाँ, मोय तोहसे सहमत हको। इ बिल्कुल ठीक हेके।"},desc:"Fist nod"},
+"NO":{en:"No, I don't agree",hi:"नहीं, मैं सहमत नहीं हूँ",nag:"नाही, मोय सहमत नाही हको",bho:"ना, हम सहमत नाहीं बानी",full:{en:"No, I do not agree. Please do not do that.",hi:"नहीं, मैं सहमत नहीं हूँ। कृपया ऐसा मत कीजिए।",nag:"नाही, मोय सहमत नाही हको।"},desc:"Side shake"}
 };
 const signGrid=document.getElementById('signGrid');
 Object.keys(signs).forEach(k=>{
@@ -90,9 +195,10 @@ Object.keys(signs).forEach(k=>{
   d.innerHTML=`<b>${k}</b><br>${signs[k].desc}`;
   signGrid.appendChild(d);
 });
+let currentLang='hi', lastSign=null, piBase=null, historyArr=[], lastPositions=[], motionState="still";
 function setLang(l,btn){
   currentLang=l;
-  document.querySelectorAll('.lang').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('#gesture.lang').forEach(b=>b.classList.remove('active'));
   if(btn) btn.classList.add('active');
   if(lastSign) showSign(lastSign,true);
 }
@@ -106,91 +212,148 @@ function showSign(key,force=false){
   if(!force && lastSign===key && now - (window.lastT||0) < 1500) return;
   window.lastT=now; lastSign=key; highlight(key);
   document.getElementById('signName').innerText=key;
-  let mean = signs[key][currentLang] || signs[key].en;
-  document.getElementById('signMean').innerText=mean;
-  document.getElementById('out').innerHTML=`${key}<small>${mean}</small>`;
-  document.getElementById('conf').innerText=`Confidence: ${(85+Math.random()*14).toFixed(1)}% • Motion: ${motionState}`;
-  historyArr.unshift(`${new Date().toLocaleTimeString()} - ${key} -> ${mean}`);
-  if(historyArr.length>6) historyArr.pop();
-  document.getElementById('history').innerHTML=historyArr.join('<br>');
+  let shortMean = signs[key][currentLang] || signs[key].en;
+  let fullMean = signs[key].full[currentLang] || signs[key].full.en;
+  document.getElementById('signMean').innerText=shortMean;
+  document.getElementById('signFull').innerText=fullMean;
+  document.getElementById('out').innerHTML=`${key}<small>${fullMean}</small>`;
+  document.getElementById('conf').innerText=`Confidence: 95% • Motion: ${motionState} • ${currentLang.toUpperCase()}`;
+  historyArr.unshift(`${new Date().toLocaleTimeString()} - ${key}`);
+  document.getElementById('history').innerHTML=historyArr.slice(0,5).join('<br>');
   speechSynthesis.cancel();
-  let utt=new SpeechSynthesisUtterance(mean);
-  utt.lang=currentLang==='en'?'en-US':'hi-IN'; utt.rate=0.95;
-  speechSynthesis.speak(utt);
-  if(navigator.vibrate) navigator.vibrate(key==='HELLO'?[100,50,100,50,200]:200);
-  if(piBase){ fetch(`${piBase}/haptic?sign=${key}&lang=${currentLang}`).catch(()=>{}); }
+  let utt=new SpeechSynthesisUtterance(fullMean);
+  utt.lang='hi-IN'; utt.rate=0.9; speechSynthesis.speak(utt);
+  if(navigator.vibrate) navigator.vibrate(200);
 }
 window.speakLast=()=>{ if(lastSign) showSign(lastSign,true); };
-window.connectPi=()=>{
-  piBase=document.getElementById('piUrl').value.trim().replace(/\/$/,'');
-  fetch(`${piBase}/`).then(()=>{document.getElementById('piStatus').innerText='✅ Pi Connected: '+piBase;}).catch(()=>{document.getElementById('piStatus').innerText='⚠️ Pi offline - Demo phone vibration';});
-};
-window.testPi=()=>{
-  if(!piBase) piBase=document.getElementById('piUrl').value.trim();
-  fetch(`${piBase}/haptic?sign=HELLO`).catch(()=>{if(navigator.vibrate) navigator.vibrate([200,100,200]);});
-};
 function isFingerOpen(tip,pip){ return tip.y < pip.y - 0.02; }
 function distance(a,b){ return Math.hypot(a.x-b.x, a.y-b.y); }
 function detectRealSign(lm){
-  let thumbTip=lm[4], thumbIp=lm[3], indexTip=lm[8], indexPip=lm[6], midTip=lm[12], midPip=lm[10], ringTip=lm[16], ringPip=lm[14], pinkyTip=lm[20], pinkyPip=lm[18], wrist=lm[0];
+  let thumbTip=lm[4], indexTip=lm[8], indexPip=lm[6], midTip=lm[12], midPip=lm[10], ringTip=lm[16], ringPip=lm[14], pinkyTip=lm[20], pinkyPip=lm[18], wrist=lm[0];
   let iOpen=isFingerOpen(indexTip,indexPip), mOpen=isFingerOpen(midTip,midPip), rOpen=isFingerOpen(ringTip,ringPip), pOpen=isFingerOpen(pinkyTip,pinkyPip);
-  let thumbOpen = thumbTip.x < thumbIp.x || thumbTip.y < thumbIp.y;
-  let thumbSide = distance(thumbTip, indexPip) > 0.08;
+  let thumbOpen = thumbTip.x < lm[3].x;
   let cnt=[iOpen,mOpen,rOpen,pOpen].filter(Boolean).length;
-  lastPositions.push({x:wrist.x,y:wrist.y,t:Date.now()});
-  if(lastPositions.length>10) lastPositions.shift();
-  let dx=0, dy=0;
-  if(lastPositions.length>=6){
-    dx=lastPositions[lastPositions.length-1].x - lastPositions[0].x;
-    dy=lastPositions[lastPositions.length-1].y - lastPositions[0].y;
-    let speed=Math.hypot(dx,dy);
-    if(speed>0.15 && Math.abs(dx)>Math.abs(dy)) motionState="waving side";
-    else if(speed>0.12) motionState="nodding up-down";
-    else motionState="still";
-  }
+  lastPositions.push({x:wrist.x,y:wrist.y,t:Date.now()}); if(lastPositions.length>10) lastPositions.shift();
+  let dx=0, dy=0; if(lastPositions.length>=6){dx=lastPositions[lastPositions.length-1].x - lastPositions[0].x; dy=lastPositions[lastPositions.length-1].y - lastPositions[0].y;}
   if(Math.abs(dx)>0.18 && cnt>=3) return "HELLO";
   if(cnt===0 && Math.abs(dy)>0.15) return "YES";
-  if(iOpen && mOpen &&!rOpen &&!pOpen && distance(indexTip,midTip)>0.08) return "NO";
+  if(iOpen && mOpen &&!rOpen &&!pOpen) return "NO";
   if(iOpen &&!mOpen &&!rOpen && pOpen && thumbOpen) return "ILY";
-  if(!iOpen &&!mOpen &&!rOpen && pOpen && thumbOpen) return "Y";
-  if(iOpen &&!mOpen &&!rOpen &&!pOpen && thumbOpen) return "L";
-  if(cnt===4 &&!thumbSide) return "B";
-  if(cnt===4 && thumbSide) return "HELP";
+  if(cnt===4) return "HELP";
   if(cnt===0 &&!thumbOpen) return "WATER";
-  if(cnt===0 && thumbSide) return "A";
-  if(thumbOpen && cnt===0 && thumbTip.y < wrist.y -0.1) return "THANK YOU";
-  if(iOpen && mOpen &&!rOpen &&!pOpen && distance(indexTip,midTip)<0.05) return "FOOD";
+  if(cnt===0) return "A";
+  if(thumbOpen && cnt===0) return "THANK YOU";
+  if(iOpen && mOpen) return "FOOD";
   return null;
 }
 let hands, camera;
 window.startCam=async()=>{
   const video=document.getElementById('video');
-  const canvas=document.getElementById('trail');
-  const ctx=canvas.getContext('2d');
-  canvas.width=640; canvas.height=480;
   document.getElementById('startBtn').innerText='Starting...';
   hands=new Hands({locateFile:f=>`https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1646424915/${f}`});
   hands.setOptions({maxNumHands:1,modelComplexity:1,minDetectionConfidence:0.65,minTrackingConfidence:0.65});
   hands.onResults(res=>{
-    ctx.clearRect(0,0,canvas.width,canvas.height);
     if(res.multiHandLandmarks && res.multiHandLandmarks[0]){
       let lm=res.multiHandLandmarks[0];
-      lm.forEach(pt=>{
-        ctx.beginPath();
-        ctx.arc((1-pt.x)*canvas.width, pt.y*canvas.height, 4, 0, 2*Math.PI);
-        ctx.fillStyle='#00d2d3'; ctx.fill();
-      });
       let key=detectRealSign(lm);
       if(key) showSign(key);
       document.getElementById('fpsBadge').innerText='LIVE • Detected Hand';
-    } else {
-      document.getElementById('fpsBadge').innerText='No hand - Show sign';
     }
   });
   camera=new Camera(video,{onFrame:async()=>{await hands.send({image:video});},width:640,height:480});
   await camera.start();
   document.getElementById('startBtn').innerText='Camera ON';
 };
+let agiLang='hi';
+function setAGILang(l,btn){
+  agiLang=l;
+  document.querySelectorAll('#bharatagi.lang').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  document.getElementById('agiLangLabel').innerText=btn?btn.innerText:l;
+}
+function handleFile(input){
+  let file=input.files[0]; if(!file) return;
+  if(file.name.endsWith('.pdf')){
+    let reader=new FileReader();
+    reader.onload=async function(){
+      let pdf=await pdfjsLib.getDocument(reader.result).promise;
+      let text=''; for(let i=1;i<=pdf.numPages;i++){let page=await pdf.getPage(i); let content=await page.getTextContent(); text+=content.items.map(it=>it.str).join(' ')+'\n';}
+      document.getElementById('docDesc').value=text.substring(0,10000);
+    }; reader.readAsArrayBuffer(file);
+  } else if(file.name.endsWith('.docx')){
+    let reader=new FileReader();
+    reader.onload=function(e){mammoth.extractRawText({arrayBuffer:e.target.result}).then(r=>{document.getElementById('docDesc').value=r.value.substring(0,10000);});};
+    reader.readAsArrayBuffer(file);
+  } else {let reader=new FileReader(); reader.onload=e=>{document.getElementById('docDesc').value=e.target.result.substring(0,10000);}; reader.readAsText(file);}
+  if(!document.getElementById('docTitle').value) document.getElementById('docTitle').value=file.name;
+}
+function saveDoc(){
+  let title=document.getElementById('docTitle').value.trim();
+  let desc=document.getElementById('docDesc').value.trim();
+  let cat=document.getElementById('docCat').value;
+  if(!title ||!desc){alert('Title and Description required'); return;}
+  let docs=JSON.parse(localStorage.getItem('bharatagi_docs')||'[]');
+  docs.push({id:Date.now(),title,desc,cat,date:new Date().toLocaleString()});
+  localStorage.setItem('bharatagi_docs',JSON.stringify(docs));
+  document.getElementById('docTitle').value=''; document.getElementById('docDesc').value=''; document.getElementById('fileInput').value='';
+  refreshDocs(); alert('Saved to Bharat AGI Knowledge Base!');
+}
+function refreshDocs(){
+  let docs=JSON.parse(localStorage.getItem('bharatagi_docs')||'[]');
+  document.getElementById('agiCount').innerText=docs.length;
+  document.getElementById('adminCount').innerText=docs.length;
+  let list=document.getElementById('docList'); let sel=document.getElementById('agiDocSelect');
+  list.innerHTML=''; sel.innerHTML='<option value="">-- Select Document --</option>';
+  docs.slice().reverse().forEach(d=>{
+    let div=document.createElement('div'); div.className='docItem';
+    div.innerHTML=`<div><b>${d.title}</b><br><span style="font-size:11px">${d.cat} • ${d.date}<br>${d.desc.substring(0,80)}...</span></div><div><button class="btn ghost" style="padding:6px 10px;font-size:11px" onclick="previewDoc(${d.id})">View</button></div>`;
+    list.appendChild(div);
+    let opt=document.createElement('option'); opt.value=d.id; opt.innerText=d.title; sel.appendChild(opt);
+  });
+}
+function previewDoc(id){
+  let docs=JSON.parse(localStorage.getItem('bharatagi_docs')||'[]');
+  let d=docs.find(x=>x.id==id); if(!d) return;
+  document.getElementById('agiPreview').innerText=d.title+':\n'+d.desc.substring(0,1000);
+  document.getElementById('agiDocSelect').value=id;
+}
+document.getElementById('agiDocSelect').addEventListener('change',e=>{if(e.target.value) previewDoc(e.target.value);});
+function speakAGI(){
+  let sel=document.getElementById('agiDocSelect').value;
+  if(!sel){alert('Select a document first'); return;}
+  let docs=JSON.parse(localStorage.getItem('bharatagi_docs')||'[]');
+  let d=docs.find(x=>x.id==sel); if(!d) return;
+  let toSpeak=d.desc.substring(0,2000);
+  speechSynthesis.cancel();
+  let utt=new SpeechSynthesisUtterance(toSpeak);
+  let langMap={en:'en-US',hi:'hi-IN',nag:'hi-IN',bho:'hi-IN',bn:'bn-IN',ta:'ta-IN',te:'te-IN',mr:'mr-IN',es:'es-ES',fr:'fr-FR',ar:'ar-SA',ja:'ja-JP',de:'de-DE'};
+  utt.lang=langMap[agiLang]||'hi-IN'; utt.rate=0.9;
+  document.getElementById('agiVoiceStatus').innerText='Speaking in '+agiLang.toUpperCase()+'...';
+  utt.onend=()=>{document.getElementById('agiVoiceStatus').innerText='Ready';};
+  speechSynthesis.speak(utt);
+}
+function stopSpeak(){speechSynthesis.cancel(); document.getElementById('agiVoiceStatus').innerText='Stopped';}
+function adminLogin(){
+  let u=document.getElementById('adminUser').value;
+  let p=document.getElementById('adminPass').value;
+  if(u==='admin' && p==='bharatagi2026'){
+    document.getElementById('adminLoginBox').style.display='none';
+    document.getElementById('adminPanel').style.display='block';
+    refreshDocs();
+  } else {document.getElementById('adminMsg').innerText='❌ Invalid credentials.';}
+}
+function adminLogout(){document.getElementById('adminLoginBox').style.display='block'; document.getElementById('adminPanel').style.display='none';}
+function clearDatabase(){
+  if(!confirm('Delete ALL? Admin only.')) return;
+  localStorage.removeItem('bharatagi_docs'); refreshDocs(); alert('Database cleared by Admin!');
+}
+function exportData(){
+  let data=localStorage.getItem('bharatagi_docs')||'[]';
+  let blob=new Blob([data],{type:'application/json'});
+  let url=URL.createObjectURL(blob);
+  let a=document.createElement('a'); a.href=url; a.download='bharatagi_knowledge.json'; a.click();
+}
+refreshDocs();
 </script>
 </body>
 </html>
