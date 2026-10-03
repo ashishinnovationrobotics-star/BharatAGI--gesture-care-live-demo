@@ -6,47 +6,54 @@
 <style>
 *{font-family:'Outfit',sans-serif;box-sizing:border-box}
 body{margin:0;background:#040b14;color:#e6f6ff;overflow-x:hidden}
-header{position:sticky;top:0;z-index:100;background:rgba(4,11,20,0.85);backdrop-filter:blur(12px);border-bottom:1px solid #123040;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
-nav a{color:#9fe9e9;text-decoration:none;font-weight:700;padding:8px 14px;border-radius:20px;border:1px solid #1a3d4a;margin-left:5px;font-size:12px}
+header{position:sticky;top:0;z-index:100;background:rgba(4,11,20,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #123040;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+nav{display:flex;flex-wrap:wrap;gap:5px}
+nav a{color:#9fe9e9;text-decoration:none;font-weight:700;padding:7px 12px;border-radius:20px;border:1px solid #1a3d4a;font-size:11px}
 nav a.active{background:#00d2d3;color:#021018}
 nav a.heritage{background:linear-gradient(90deg,#c9b896,#8b7355);color:#1a1610;border-color:#c9b896;font-weight:800}
+nav a.atma{background:linear-gradient(90deg,#FF9933,#FFFFFF,#138808);color:#000;border-color:#FF9933;font-weight:900;box-shadow:0 0 10px #FF993355}
 .hero{position:relative;padding:70px 20px 50px;text-align:center;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,#0a5a6a55,transparent 70%);border-radius:50%}
 .grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;padding:16px}
 .card{background:linear-gradient(180deg,#0c1a29,#09131f);border:1px solid #173040;border-radius:18px;padding:18px;transition:0.3s}
 .card:hover{transform:translateY(-4px);border-color:#00d2d3;box-shadow:0 10px 30px #00d2d355}
 .card.heritage-card{background:linear-gradient(180deg,#1c1912,#14120c);border-color:#8b7355}
-.card.heritage-card:hover{border-color:#c9b896;box-shadow:0 10px 30px #c9b89633}
-.btn{padding:12px 22px;border-radius:12px;border:none;font-weight:800;cursor:pointer;text-decoration:none;display:inline-block;margin:4px;font-size:14px}
+.btn{padding:12px 20px;border-radius:12px;border:none;font-weight:800;cursor:pointer;text-decoration:none;display:inline-block;margin:5px;font-size:13px;transition:0.2s}
+.btn:hover{transform:translateY(-2px)}
 .primary{background:#00d2d3;color:#021018}
+.atma-btn{background:linear-gradient(90deg,#FF9933,#FFFFFF,#138808);color:#000;border:2px solid #FF9933;font-weight:900;letter-spacing:0.3px;box-shadow:0 0 15px #FF993355}
 .badge{font-size:11px;background:#0f2a3a;padding:4px 10px;border-radius:20px;border:1px solid #1e4a5a;color:#7de9e9;margin:3px;display:inline-block}
 .badge.gold{background:#1f1a12;border-color:#8b7355;color:#c9b896}
 .tech{font-family:'Space Grotesk',sans-serif}
 </style>
 </head><body>
 <header>
-<div style="font-weight:800;font-size:18px;letter-spacing:0.5px">BHARAT AGI <span style="color:#00d2d3">3026 WORLDWIDE</span></div>
+<div style="font-weight:800;font-size:17px;letter-spacing:0.5px">BHARAT AGI <span style="color:#00d2d3">3026 WORLDWIDE</span></div>
 <nav>
 <a class="active" href="index.html">Home</a>
 <a href="gesture.html">Gesture</a>
 <a href="bharatagi.html">Bharat AGI</a>
 <a class="heritage" href="heritage.html">🏛️ Heritage 1881-1952</a>
+<a class="atma" href="https://bharat-agi.vercel.app/" target="_blank">🇮🇳 Atmanirbhar Bharat AGI</a>
 <a href="founder.html">Founder</a>
 <a href="admin.html">Admin</a>
 </nav>
 </header>
+
 <div class="hero">
 <div class="badge">EXPO TANK FINALE 2026 • WORLDWIDE • 40+ LANGUAGES • MUSEUM GRADE ARCHIVE</div>
 <div class="badge gold">Rare Archive: Maxwell 1881 • Einstein 1952 Letter to S.N. Bose • Owner: Dr. Sushant Kumar Ghosh</div>
 <h1 class="tech" style="font-size:52px;line-height:0.95;margin:18px 0">India's First<br><span style="color:#00d2d3">Offline AGI</span> Now<br>For The Whole World</h1>
 <p style="max-width:700px;margin:auto;color:#8fb2c2;font-size:15px;line-height:1.5">Upload any English document → Auto-translate to Nagpuri, Bhojpuri, Magahi, Maithili, Hindi, Tamil, Telugu + Spanish, French, German, Japanese, Arabic, Chinese, Russian, Portuguese. Human-like speaking, no # % reading. Gesture + Motion AI + Worldwide Voice. <br><b style="color:#c9b896">From 1881 Maxwell to 3026 - Bharat ki vaigyanik virasat.</b></p>
-<div style="margin-top:24px">
+
+<div style="margin-top:24px;display:flex;justify-content:center;flex-wrap:wrap">
 <a href="gesture.html" class="btn primary">🖐️ Live Gesture Demo →</a>
 <a href="bharatagi.html" class="btn" style="background:#102a3a;color:#8fe9e9;border:1px solid #1d4a5a">🌍 Worldwide Translator →</a>
 <a href="heritage.html" class="btn" style="background:linear-gradient(90deg,#c9b896,#8b7355);color:#1a1610;border:1px solid #c9b896">🏛️ Rare Archive 1881-1952 →</a>
-<a href="https://bharat-agi.vercel.app/" target="_blank" class="btn" style="background:#ffffff;color:#040b14;border:2px solid #00d2d3">🌐 Main Portal bharat-agi.vercel.app →</a>
+<a href="https://bharat-agi.vercel.app/" target="_blank" class="btn atma-btn">🇮🇳 Atmanirbhar Bharat AGI →</a>
 <a href="founder.html" class="btn" style="background:#0a1a2a;color:#00d2d3;border:1px solid #00d2d3">👤 Meet Founder →</a>
 </div>
+
 <div style="margin-top:30px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap">
 <div class="badge">22 Indian Languages</div>
 <div class="badge">20+ International</div>
@@ -54,18 +61,21 @@ nav a.heritage{background:linear-gradient(90deg,#c9b896,#8b7355);color:#1a1610;b
 <div class="badge">Ask AI from PDF</div>
 <div class="badge">Motion Capture Gesture</div>
 <div class="badge gold">Maxwell 1881 • Einstein 1952</div>
-<div class="badge" style="background:white;color:#040b14;border-color:#00d2d3">Main Portal Live</div>
+<div class="badge" style="background:linear-gradient(90deg,#FF9933,#fff,#138808);color:#000;border-color:#FF9933;font-weight:800">🇮🇳 Atmanirbhar Bharat AGI Live</div>
 </div>
 </div>
+
 <div class="grid">
 <div class="card"><h3>🖐️ Gesture Care - Motion Enabled</h3><p style="color:#8fb2c2;font-size:13px">Real ISL/ASL + Motion trail canvas. Waving = Hello (Johaar), Nodding = Yes. Speaks full sentences in Nagpuri, Hindi, Bhojpuri + Spanish, French worldwide.</p><a href="gesture.html" style="color:#00d2d3">Open Gesture Live →</a></div>
 <div class="card"><h3>🌍 Bharat AGI Worldwide Translator</h3><p style="color:#8fb2c2;font-size:13px">Upload English PDF → Select Nagpuri, Bhojpuri, Tamil, Spanish, Japanese, Arabic... → Auto-translate using MyMemory API + Human cleaning algorithm → Speak like human. No hash # % loud.</p><a href="bharatagi.html" style="color:#00d2d3">Open Worldwide AI →</a></div>
 <div class="card heritage-card"><h3>🏛️ Rare Scientific Heritage Archive - From Maxwell to Einstein</h3><p style="color:#a89a7d;font-size:13px">Original 1881 Maxwell's A Treatise on Electricity and Magnetism + Einstein's 1952 Letter to Prof. S.N. Bose Princeton discussing unified field theory g_ik,l=0. Owner: Dr. Sushant Kumar Ghosh Collection, Catalog No. RSHA-ME-1881-1952, Museum Grade.</p><a href="heritage.html" style="color:#c9b896;font-weight:800">Explore Archive 1881-1952 →</a><br><span class="badge gold">Bharat ki vaigyanik virasat</span></div>
 </div>
+
 <div class="grid">
-<div class="card"><h3>🌐 Main Portal - bharat-agi.vercel.app</h3><p style="color:#8fb2c2;font-size:13px">Our original Bharat AGI 3026 portal - India's First Offline AGI. Production-ready with JWT Auth, Supabase Vector DB, Razorpay, 22 Languages. Live at bharat-agi.vercel.app - Market Ready Version.</p><a href="https://bharat-agi.vercel.app/" target="_blank" style="color:#00d2d3;font-weight:800">Visit Main Portal bharat-agi.vercel.app →</a><br><span class="badge" style="background:white;color:#040b14">Official Portal</span> <span class="badge">Market Ready</span></div>
+<div class="card" style="border-color:#FF9933;background:linear-gradient(180deg,#1c1912,#14120c)"><h3>🇮🇳 Atmanirbhar Bharat AGI - Main Portal</h3><p style="color:#a89a7d;font-size:13px">Our official production portal - India's First Offline AGI with JWT Auth, Supabase Vector DB, Razorpay, 22 Languages. Live at bharat-agi.vercel.app - Built for Viksit Bharat 2047 & Atmanirbhar Bharat Mission. Click below to visit main portal.</p><a href="https://bharat-agi.vercel.app/" target="_blank" style="color:#FF9933;font-weight:900;text-decoration:none">🇮🇳 Visit Atmanirbhar Bharat AGI Portal →</a><br><span class="badge" style="background:linear-gradient(90deg,#FF9933,#fff,#138808);color:#000;font-weight:800">🇮🇳 Atmanirbhar Bharat</span> <span class="badge">Market Ready</span> <span class="badge">Viksit Bharat 2047</span></div>
 <div class="card"><h3>👤 Founder - Ashish Kumar</h3><p style="color:#8fb2c2;font-size:13px">MCA 3rd Sem, Jharkhand Rai University. Founder & Director MVA Robotics Innovation. 2nd Prize Handiix JUT, IIT Hyderabad Incubator Selected, ICAFMES 2026, AGRICO Bangkok 2025, Sri Lanka Conference. mvaroboticsinnovation@gmail.com | 6239066177</p><a href="founder.html" style="color:#00d2d3">Meet Founder →</a></div>
 <div class="card"><h3>📜 Timeline 1881 → 3026</h3><p style="color:#8fb2c2;font-size:12px;line-height:1.6"><b>1881</b> Maxwell • <b>1948</b> Differential Calculus • <b>1952</b> Einstein to Bose • <b>1956</b> Tensor Calculus • <b>2025</b> AGRICO Bangkok • <b>2026</b> ICAFMES, Handiix 2nd Prize, IIT Hyderabad Incubator • <b>2026 Finale</b> Bharat AGI 3026 x Gesture Care • <b>3026 Vision</b> Quantum AGI</p><a href="heritage.html" style="color:#c9b896">View Full Timeline →</a></div>
 </div>
-<div style="text-align:center;padding:30px;color:#5a7a8a;font-size:12px">Built by Ashish Kumar • MCA 3rd Sem • Jharkhand Rai University • Founder MVA Robotics Innovation • Email: mvaroboticsinnovation@gmail.com • Contact: 6239066177 • Ranchi, Jharkhand, India → Worldwide • For Viksit Bharat 2047 & World<br>Main Portal: <a href="https://bharat-agi.vercel.app/" style="color:#00d2d3">https://bharat-agi.vercel.app/</a> • Gesture Care: https://bharatagi-gesture-care-live-demo-81024baam.vercel.app/ • Owner: Dr. Sushant Kumar Ghosh Collection • Catalog No. RSHA-ME-1881-1952</div>
+
+<div style="text-align:center;padding:30px;color:#5a7a8a;font-size:12px">Built by Ashish Kumar • MCA 3rd Sem • Jharkhand Rai University • Founder MVA Robotics Innovation • Email: mvaroboticsinnovation@gmail.com • Contact: 6239066177 • Ranchi, Jharkhand, India → Worldwide • For Viksit Bharat 2047 & World<br>Atmanirbhar Bharat AGI Portal: <a href="https://bharat-agi.vercel.app/" target="_blank" style="color:#FF9933;font-weight:800">https://bharat-agi.vercel.app/</a> • Gesture Care: https://bharatagi-gesture-care-live-demo.vercel.app/ • Owner: Dr. Sushant Kumar Ghosh Collection • Catalog No. RSHA-ME-1881-1952</div>
 </body></html>
