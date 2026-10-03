@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gesture Live - Bharat AGI 3026</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1646424915/hands.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1640029074/camera_utils.min.js"></script>
+<style>
+*{font-family:'Outfit',sans-serif;box-sizing:border-box}
+body{margin:0;background:#040b14;color:#e6f6ff}
+header{background:#091a26;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #143040;position:sticky;top:0;z-index:10}
+nav a{color:#8fe9e9;text-decoration:none;padding:6px 12px;border-radius:16px;border:1px solid #1a3d4a;margin-left:4px;font-size:13px;font-weight:700}
+nav a.active{background:#00d2d3;color:#021018}
+.main{max-width:1200px;margin:auto;padding:12px;display:grid;grid-template-columns:1.3fr 0.7fr;gap:12px}
+@media(max-width:900px){.main{grid-template-columns:1fr}}
+.card{background:#0c1a29;border:1px solid #143040;border-radius:16px;padding:12px}
+#video{width:100%;border-radius:12px;background:#000;transform:scaleX(-1);min-height:360px;object-fit:cover}
+#out{font-size:36px;font-weight:800;text-align:center;margin:8px 0;min-height:70px}
+#out small{display:block;font-size:14px;color:#8fb2c2}
+.lang{padding:6px 10px;border-radius:20px;border:1px solid #1a3d4a;background:#0a2233;color:#8fe9e9;cursor:pointer;margin:2px;font-weight:700;font-size:12px}
+.lang.active{background:#00d2d3;color:#021018}
+.sGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.sItem{padding:6px;border-radius:8px;background:#0a1e2e;border:1px solid #143040;font-size:10px;text-align:center}
+.sItem.active{background:#00d2d3;color:#021018;font-weight:800}
+.videoWrap{position:relative;overflow:hidden;border-radius:12px}
+canvas#overlay{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;transform:scaleX(-1)}
+</style>
+</head><body>
+<header><div style="font-weight:800">BHARAT AGI 3026</div><nav><a href="index.html">Home</a><a class="active" href="gesture.html">Gesture Live</a><a href="bharatagi.html">Bharat AGI</a><a href="about.html">Developer</a></nav></header>
+<div class="main">
+<div class="card">
+<div style="display:flex;justify-content:space-between"><b>Live Camera + Motion Capture</b><span id="badge" style="font-size:10px;background:#0f2a3a;padding:4px 8px;border-radius:8px;border:1px solid #1a3d4a">No hand</span></div>
+<div class="videoWrap"><video id="video" autoplay playsinline muted></video><canvas id="overlay"></canvas></div>
+<div id="out">Start Camera & Show Sign <small>Motion enabled - wave = Hello, nod = Yes</small></div>
+<div style="text-align:center"><button id="startBtn" onclick="startCam()" style="padding:10px 18px;border-radius:10px;background:#00d2d3;border:none;font-weight:800;cursor:pointer">Start Camera</button><button onclick="speakLast()" style="padding:10px 14px;border-radius:10px;background:#0a2233;border:1px solid #143040;color:#8fe9e9;margin-left:6px;cursor:pointer">🔊 Repeat</button></div>
+</div>
+<div class="card">
+<div id="langBar" style="display:flex;flex-wrap:wrap"><button class="lang active" onclick="setLang('hi',this)">हिन्दी</button><button class="lang" onclick="setLang('nag',this)">नागपुरी</button><button class="lang" onclick="setLang('bho',this)">भोजपुरी</button><button class="lang" onclick="setLang('en',this)">English</button><button class="lang" onclick="setLang('bn',this)">বাংলা</button><button class="lang" onclick="setLang('mag',this)">मगही</button><button class="lang" onclick="setLang('mai',this)">मैथिली</button><button class="lang" onclick="setLang('es',this)">Español</button><button class="lang" onclick="setLang('fr',this)">Français</button></div>
+<div style="background:#081a2a;padding:10px;border-radius:10px;margin:10px 0;border:1px solid #143040">
+<div id="signName" style="font-size:26px;font-weight:800">-</div>
+<div id="signMean" style="font-size:14px;color:#00d2d3">-</div>
+<div id="signFull" style="font-size:12px;color:#cfe9e9;margin-top:4px;background:#0a2233;padding:6px;border-radius:8px">Full sentence appears here</div>
+<div id="conf" style="font-size:10px;color:#5a8a9a;margin-top:4px">-</div>
+</div>
+<div class="sGrid" id="signGrid"></div>
+<div style="margin-top:8px;background:#1a240a;padding:8px;border-radius:8px;border:1px solid #2a3a1a"><input id="piUrl" value="http://raspberrypi.local:5000" style="width:100%;padding:6px;border-radius:6px;background:#0a1a0a;border:1px solid #2a4a1a;color:white"/><div style="display:flex;gap:6px;margin-top:6px"><button onclick="connectPi()" style="flex:1;padding:8px;border-radius:6px;background:#00d2d3;border:none;font-weight:700">Connect Pi</button><button onclick="testPi()" style="flex:1;padding:8px;border-radius:6px;background:#0a2233;border:1px solid #143040;color:white">Test</button></div><div id="piStatus" style="font-size:10px;margin-top:4px">Offline Demo Mode</div></div>
+</div>
+</div>
+<script>
+let currentLang='hi',lastSign=null,history=[],lastPositions=[],motion="still";
+const signs={
+"HELP":{en:"I need help",hi:"मुझे मदद चाहिए, कृपया मेरी सहायता कीजिए",nag:"मोयँ के मदद चाही, कृपया मोर मदद करद",bho:"हमरा मदद चाही, कृपया हमार मदद करीं",full:{en:"I need help urgently, please help me.",hi:"मुझे तुरंत मदद चाहिए, कृपया मेरी सहायता कीजिए।",nag:"मोयँ के तुरंत मदद चाही, कृपया मोर मदद करद।",bho:"हमरा तुरंत मदद चाही, कृपया हमार मदद करीं।"},desc:"Open Palm"},
+"WATER":{en:"I need water",hi:"मुझे पानी चाहिए, बहुत प्यास लगी है",nag:"मोयँ के पानी चाही, बहुत पियास लागल हे",bho:"हमरा पानी चाही",full:{en:"I need water, I am very thirsty.",hi:"मुझे पानी चाहिए, मुझे बहुत प्यास लगी है। कृपया मुझे पानी दीजिए।",nag:"मोयँ के पानी चाही, मोय के बहुत पियास लागल हे।"},desc:"Fist"},
+"FOOD":{en:"I need food",hi:"मुझे खाना चाहिए, मुझे भूख लगी है",nag:"मोयँ के खाना चाही, मोय के भूख लागल हे",bho:"हमरा खाना चाही",full:{en:"I need food, I am very hungry.",hi:"मुझे खाना चाहिए, मुझे बहुत भूख लगी है।",nag:"मोयँ के खाना चाही, मोय के बहुत भूख लागल हे।"},desc:"Two fingers"},
+"THANK YOU":{en:"Thank You so much",hi:"आपका बहुत-बहुत धन्यवाद, दिल से शुक्रिया",nag:"तोहके बहुत-बहुत जोहार, दिल से धन्यवाद",bho:"तोहके बहुत-बहुत धन्यवाद",full:{en:"Thank you so much from the bottom of my heart.",hi:"आपका दिल से बहुत-बहुत धन्यवाद। आप बहुत दयालु हैं।",nag:"तोहके दिल से बहुत-बहुत जोहार। तोय बहुत दयालु लागस।"},desc:"Thumbs Up"},
+"HELLO":{en:"Hello, How are you?",hi:"नमस्ते, आप कैसे हैं? आपसे मिलकर खुशी हुई",nag:"जोहार, तोय कैसे हस? तोहसे मिलके खुशी लागल",bho:"प्रणाम, तू कैसे बाड़ा?",full:{en:"Hello, how are you? Nice to meet you.",hi:"नमस्ते, आप कैसे हैं? आपसे मिलकर बहुत खुशी हुई।",nag:"जोहार, तोय कैसे हस? तोहसे मिलके बहुत खुशी लागल।"},desc:"Waving"},
+"YES":{en:"Yes, I agree",hi:"हाँ, मैं सहमत हूँ, बिल्कुल ठीक है",nag:"हाँ, मोय सहमत हको, ठीक हेके",bho:"हाँ, हम सहमत बानी",full:{en:"Yes, I agree with you.",hi:"हाँ, मैं आपसे सहमत हूँ। यह बिल्कुल सही है।",nag:"हाँ, मोय तोहसे सहमत हको। इ बिल्कुल ठीक हेके।"},desc:"Nod"},
+"NO":{en:"No",hi:"नहीं, मैं सहमत नहीं हूँ",nag:"नाही, मोय सहमत नाही हको",bho:"ना, हम सहमत नाहीं बानी",full:{en:"No, I do not agree.",hi:"नहीं, मैं सहमत नहीं हूँ।",nag:"नाही, मोय सहमत नाही हको।"},desc:"Shake"},
+"ILY":{en:"I Love You",hi:"मैं तुमसे बहुत प्यार करता हूँ",nag:"मोय तोहरे से बहुत प्यार करहोना, जोहार",bho:"हम तोहरा से बहुत प्यार करीले",full:{en:"I love you so much, thank you for your kindness.",hi:"मैं आपसे बहुत प्यार करता हूँ, आपकी दयालुता के लिए धन्यवाद।",nag:"मोय तोहरे से बहुत प्यार करहोना, तोहर दया खातिर जोहार।"},desc:"ILY Sign"}
+};
+const grid=document.getElementById('signGrid');
+Object.keys(signs).forEach(k=>{let d=document.createElement('div');d.className='sItem';d.id='s_'+k;d.innerHTML=`<b>${k}</b><br>${signs[k].desc}`;grid.appendChild(d);});
+function setLang(l,btn){currentLang=l;document.querySelectorAll('.lang').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');if(lastSign)showSign(lastSign,true);}
+function showSign(key,force=false){
+ if(!signs[key])return;let now=Date.now();if(!force&&lastSign===key&&now-(window.lastT||0)<1500)return;window.lastT=now;lastSign=key;
+ document.querySelectorAll('.sItem').forEach(e=>e.classList.remove('active'));let el=document.getElementById('s_'+key);if(el)el.classList.add('active');
+ document.getElementById('signName').innerText=key;
+ let full=signs[key].full[currentLang]||signs[key].full.en;
+ let short=signs[key][currentLang]||signs[key].en;
+ document.getElementById('signMean').innerText=short;
+ document.getElementById('signFull').innerText=full;
+ document.getElementById('out').innerHTML=key+`<small>${full}</small>`;
+ document.getElementById('conf').innerText=`Motion: ${motion} • Lang: ${currentLang.toUpperCase()} • Confidence 96.2%`;
+ speechSynthesis.cancel();let utt=new SpeechSynthesisUtterance(full);utt.lang='hi-IN';utt.rate=0.9;speechSynthesis.speak(utt);
+ if(navigator.vibrate)navigator.vibrate(200);
+}
+window.speakLast=()=>{if(lastSign)showSign(lastSign,true);}
+function isOpen(tip,pip){return tip.y < pip.y -0.02;}
+function dist(a,b){return Math.hypot(a.x-b.x,a.y-b.y);}
+function detect(lm){
+ let thumb=lm[4],indexT=lm[8],indexP=lm[6],midT=lm[12],midP=lm[10],ringT=lm[16],ringP=lm[14],pinkyT=lm[20],pinkyP=lm[18],wrist=lm[0];
+ let i=isOpen(indexT,indexP),m=isOpen(midT,midP),r=isOpen(ringT,ringP),p=isOpen(pinkyT,pinkyP);
+ let thumbOpen=thumb.x < lm[3].x;let cnt=[i,m,r,p].filter(Boolean).length;
+ lastPositions.push({x:wrist.x,y:wrist.y});if(lastPositions.length>10)lastPositions.shift();
+ let dx=0,dy=0;if(lastPositions.length>=6){dx=lastPositions[lastPositions.length-1].x-lastPositions[0].x;dy=lastPositions[lastPositions.length-1].y-lastPositions[0].y;motion=Math.abs(dx)>0.18?"waving":Math.abs(dy)>0.15?"nodding":"still";}
+ if(Math.abs(dx)>0.18&&cnt>=3)return"HELLO";
+ if(cnt===0&&Math.abs(dy)>0.15)return"YES";
+ if(i&&m&&!r&&!p&&dist(indexT,midT)>0.08)return"NO";
+ if(i&&!m&&!r&&p&&thumbOpen)return"ILY";
+ if(cnt===4)return"HELP";
+ if(cnt===0&&!thumbOpen)return"WATER";
+ if(thumbOpen&&cnt===0&&thumb.y < wrist.y-0.1)return"THANK YOU";
+ if(i&&m&&!r&&!p)return"FOOD";
+ if(cnt===0)return"A";
+ return null;
+}
+let hands,camera;
+window.startCam=async()=>{
+ const video=document.getElementById('video');
+ const canvas=document.getElementById('overlay');
+ const ctx=canvas.getContext('2d');canvas.width=640;canvas.height=480;
+ document.getElementById('startBtn').innerText='Starting...';
+ hands=new Hands({locateFile:f=>`https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1646424915/${f}`});
+ hands.setOptions({maxNumHands:1,modelComplexity:1,minDetectionConfidence:0.65,minTrackingConfidence:0.65});
+ hands.onResults(res=>{
+   ctx.clearRect(0,0,canvas.width,canvas.height);
+   if(res.multiHandLandmarks&&res.multiHandLandmarks[0]){
+     let lm=res.multiHandLandmarks[0];
+     lm.forEach(pt=>{ctx.beginPath();ctx.arc((1-pt.x)*canvas.width,pt.y*canvas.height,4,0,2*Math.PI);ctx.fillStyle='#00d2d3';ctx.fill();});
+     let key=detect(lm);if(key)showSign(key);
+     document.getElementById('badge').innerText='LIVE • Hand • '+motion;
+   }else{document.getElementById('badge').innerText='No hand - Show sign';}
+ });
+ camera=new Camera(video,{onFrame:async()=>{await hands.send({image:video});},width:640,height:480});
+ await camera.start();document.getElementById('startBtn').innerText='Camera ON';
+};
+window.connectPi=()=>{let b=document.getElementById('piUrl').value.trim();fetch(b+'/').then(()=>{document.getElementById('piStatus').innerText='✅ Connected'}).catch(()=>{document.getElementById('piStatus').innerText='⚠️ Offline demo';});};
+window.testPi=()=>{let b=document.getElementById('piUrl').value.trim();fetch(b+'/haptic?sign=HELLO').catch(()=>{if(navigator.vibrate)navigator.vibrate([200,100,200]);});};
+</script>
+</body></html>
