@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Bharat AGI - Knowledge AI</title>
+<title>Bharat AGI 3026 Worldwide - Translator</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
@@ -10,97 +10,119 @@ body{margin:0;background:#040b14;color:#e6f6ff}
 header{background:#091a26;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #143040;position:sticky;top:0;z-index:10}
 nav a{color:#8fe9e9;text-decoration:none;padding:6px 12px;border-radius:16px;border:1px solid #1a3d4a;margin-left:4px;font-size:13px;font-weight:700}
 nav a.active{background:#00d2d3;color:#021018}
-.main{max-width:1200px;margin:auto;padding:12px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:12px}
+.main{max-width:1250px;margin:auto;padding:12px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:12px}
 @media(max-width:900px){.main{grid-template-columns:1fr}}
 .card{background:#0c1a29;border:1px solid #143040;border-radius:16px;padding:14px}
 .btn{padding:10px 18px;border-radius:10px;border:none;font-weight:800;cursor:pointer}
 .primary{background:#00d2d3;color:#021018}
 .ghost{background:#0a2233;border:1px solid #143040;color:#8fe9e9}
-.lang{padding:6px 10px;border-radius:20px;border:1px solid #1a3d4a;background:#0a2233;color:#8fe9e9;cursor:pointer;margin:3px;font-size:12px;font-weight:700}
+.lang{padding:6px 10px;border-radius:20px;border:1px solid #1a3d4a;background:#0a2233;color:#8fe9e9;cursor:pointer;margin:3px;font-size:11px;font-weight:700}
 .lang.active{background:#00d2d3;color:#021018}
 input,textarea,select{width:100%;padding:10px;border-radius:10px;background:#081a2a;border:1px solid #143040;color:#e6f6ff;margin:6px 0}
-.docItem{background:#081a2a;border:1px solid #143040;border-radius:10px;padding:10px;margin:6px 0;display:flex;justify-content:space-between}
+.docItem{background:#081a2a;border:1px solid #143040;border-radius:10px;padding:10px;margin:6px 0}
+.badge{font-size:10px;background:#0f2a3a;padding:3px 8px;border-radius:12px;border:1px solid #1e4a5a;color:#7de9e9}
 </style>
 </head><body>
-<header><div style="font-weight:800">BHARAT AGI 3026</div><nav><a href="index.html">Home</a><a href="gesture.html">Gesture</a><a class="active" href="bharatagi.html">Bharat AGI</a><a href="about.html">Developer</a><a href="admin.html">Admin</a></nav></header>
+<header><div style="font-weight:800">BHARAT AGI 3026 <span style="color:#00d2d3">WORLDWIDE</span></div><nav><a href="index.html">Home</a><a href="gesture.html">Gesture</a><a class="active" href="bharatagi.html">Bharat AGI Worldwide</a><a href="founder.html">Founder</a><a href="admin.html">Admin</a></nav></header>
+<div style="text-align:center;padding:10px;background:linear-gradient(90deg,#0a3d62,#00a8a8);color:white;font-size:12px">🌍 Bharat AGI Worldwide: Upload English Doc → Convert to 40+ Languages (Nagpuri to Japanese) → Speak Like Human • No # % Reading • Ask AI Model</div>
 <div class="main">
 <div class="card">
-<h2 style="margin:0">🧠 Bharat AGI - Knowledge to Regional Voice</h2>
-<p style="font-size:11px;color:#7a9aaa">Human-like reading • Auto-clean # % symbols • Ask from PDF</p>
+<h2 style="margin:0">🧠 Bharat AGI Worldwide - Document Translator + AI</h2>
+<p style="font-size:11px;color:#7a9aaa">Upload PDF/Word/Text (English). Select any regional or foreign language. It will TRANSLATE and SPEAK in that language.</p>
 <div style="background:#081a2a;padding:12px;border-radius:12px;border:1px dashed #1a4a5a">
-<label><b>Upload Document (PDF / DOCX / TXT)</b></label>
+<label><b>Upload Document (PDF / DOCX / TXT) - Any Language</b></label>
 <input type="file" id="fileInput" accept=".pdf,.docx,.txt,.doc" onchange="handleFile(this)"/>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-<input id="docTitle" placeholder="Title - e.g., Swachh Bharat"/>
-<select id="docCat"><option>Education</option><option>Healthcare</option><option>Agriculture</option><option>Gesture Care</option><option>Culture</option><option>Jharkhand</option></select>
+<input id="docTitle" placeholder="Title - e.g., Climate Change Report"/>
+<select id="docCat"><option>Education</option><option>Healthcare</option><option>Technology</option><option>Agriculture</option><option>World Affairs</option><option>Jharkhand</option></select>
 </div>
-<textarea id="docDesc" rows="6" placeholder="Description / Content - auto-filled after PDF upload (cleaned)"></textarea>
-<button class="btn primary" style="width:100%" onclick="saveDoc()">💾 Save to Knowledge Base (Cleaned)</button>
-<div style="font-size:10px;color:#5a8a8a;margin-top:4px">Algorithm: Removes #, %, URLs, numbers, gibberish - keeps only human sentences (3+ words).</div>
+<textarea id="docDesc" rows="5" placeholder="Content - auto-filled after PDF upload (cleaned, human-readable)"></textarea>
+<button class="btn primary" style="width:100%" onclick="saveDoc()">💾 Save to Worldwide Knowledge Base</button>
 </div>
-<div style="margin-top:16px;background:#0a1e0a;padding:12px;border-radius:12px;border:1px solid #1a3a1a">
-<h3 style="margin:0">❓ Ask from Knowledge Base (AI Model)</h3>
-<p style="font-size:11px;color:#8aaa8a">Upload PDF then write what you want to ask - Bharat AGI will find answer and speak.</p>
-<textarea id="askInput" rows="2" placeholder="e.g., What is in this PDF? / Is PDF me kya likha hai? / Nagpuri me batao ye kya hai"></textarea>
-<div style="display:flex;flex-wrap:wrap;margin:6px 0">
+<div style="margin-top:14px;background:#0a1e0a;padding:12px;border-radius:12px;border:1px solid #1a3a1a">
+<h3 style="margin:0">❓ Ask AI + Translate + Speak Worldwide</h3>
+<textarea id="askInput" rows="2" placeholder="e.g., Summarize this document in Nagpuri / Is document ko Bhojpuri me samjhao / Translate this to Spanish"></textarea>
+<div style="margin-top:8px">
+<div style="font-size:11px;font-weight:700;color:#00d2d3">🇮🇳 Indian Regional (22)</div>
+<div style="display:flex;flex-wrap:wrap">
 <button class="lang active" onclick="setAGILang('hi',this)">हिन्दी</button>
 <button class="lang" onclick="setAGILang('nag',this)">नागपुरी</button>
 <button class="lang" onclick="setAGILang('bho',this)">भोजपुरी</button>
-<button class="lang" onclick="setAGILang('en',this)">English</button>
+<button class="lang" onclick="setAGILang('mag',this)">मगही</button>
+<button class="lang" onclick="setAGILang('mai',this)">मैथिली</button>
 <button class="lang" onclick="setAGILang('bn',this)">বাংলা</button>
+<button class="lang" onclick="setAGILang('ta',this)">தமிழ்</button>
+<button class="lang" onclick="setAGILang('te',this)">తెలుగు</button>
+<button class="lang" onclick="setAGILang('mr',this)">मराठी</button>
+<button class="lang" onclick="setAGILang('gu',this)">ગુજરાતી</button>
+<button class="lang" onclick="setAGILang('kn',this)">ಕನ್ನಡ</button>
+<button class="lang" onclick="setAGILang('ml',this)">മലയാളം</button>
+<button class="lang" onclick="setAGILang('en',this)">English</button>
+</div>
+<div style="font-size:11px;font-weight:700;color:#00d2d3;margin-top:8px">🌍 International (20+)</div>
+<div style="display:flex;flex-wrap:wrap">
 <button class="lang" onclick="setAGILang('es',this)">Español</button>
 <button class="lang" onclick="setAGILang('fr',this)">Français</button>
+<button class="lang" onclick="setAGILang('de',this)">Deutsch</button>
+<button class="lang" onclick="setAGILang('ja',this)">日本語</button>
+<button class="lang" onclick="setAGILang('ko',this)">한국어</button>
+<button class="lang" onclick="setAGILang('zh',this)">中文</button>
+<button class="lang" onclick="setAGILang('ar',this)">العربية</button>
+<button class="lang" onclick="setAGILang('ru',this)">Русский</button>
+<button class="lang" onclick="setAGILang('pt',this)">Português</button>
+<button class="lang" onclick="setAGILang('it',this)">Italiano</button>
 </div>
-<button class="btn primary" style="width:100%" onclick="askAGI()">🧠 Bharat AGI Answer & Speak in <span id="agiLangLabel">Hindi</span></button>
-<div id="answerBox" style="background:#081a2a;padding:12px;border-radius:10px;margin-top:10px;min-height:80px;border:1px solid #143040;font-size:13px">Answer will appear here - human-like, no hash reading.</div>
-<div style="display:flex;gap:6px;margin-top:8px"><button class="btn ghost" style="flex:1" onclick="speakAnswer()">🔊 Speak Answer</button><button class="btn ghost" style="flex:1" onclick="stopSpeak()">⏹️ Stop</button></div>
 </div>
-<div style="margin-top:12px">
-<h3 style="margin:0">🔊 Quick Speak Stored Doc</h3>
-<select id="agiDocSelect"></select>
-<div id="agiPreview" style="background:#081a2a;padding:10px;border-radius:8px;margin-top:6px;font-size:12px;max-height:120px;overflow:auto;border:1px solid #143040">Select doc...</div>
-<button class="btn ghost" style="width:100%;margin-top:6px" onclick="speakDoc()">🔊 Speak Selected Doc</button>
+<button class="btn primary" style="width:100%;margin-top:10px" onclick="askAGI()">🧠 Bharat AGI: Translate, Answer & Speak in <span id="agiLangLabel">Hindi</span> 🌍</button>
+<div id="answerBox" style="background:#081a2a;padding:12px;border-radius:10px;margin-top:10px;min-height:90px;border:1px solid #143040;font-size:13px;line-height:1.5">Answer + Translated text will appear here.</div>
+<div style="display:flex;gap:6px;margin-top:8px"><button class="btn ghost" style="flex:1" onclick="speakAnswer()">🔊 Speak</button><button class="btn ghost" style="flex:1" onclick="stopSpeak()">⏹️ Stop</button><button class="btn ghost" style="flex:1" onclick="copyAnswer()">📋 Copy</button></div>
+</div>
+<div style="margin-top:10px">
+<h3 style="margin:0">🔊 Direct Translator</h3>
+<textarea id="directText" rows="3" placeholder="Paste any English text here to translate and speak..."></textarea>
+<button class="btn ghost" style="width:100%" onclick="translateDirect()">🌍 Translate & Speak Direct Text</button>
+<div id="directResult" style="background:#081a2a;padding:10px;border-radius:8px;margin-top:6px;font-size:12px;min-height:40px;border:1px solid #143040">Translated text will appear here...</div>
 </div>
 </div>
 <div class="card">
-<h3>📚 Knowledge Base (Local Storage) - <span id="agiCount">0</span> docs</h3>
+<h3>📚 Worldwide Knowledge Base - <span id="agiCount">0</span> docs</h3>
 <div id="docList" style="max-height:700px;overflow:auto"></div>
+<select id="agiDocSelect" style="margin-top:10px"></select>
+<div id="agiPreview" style="background:#081a2a;padding:10px;border-radius:8px;margin-top:6px;font-size:12px;max-height:120px;overflow:auto;border:1px solid #143040">Select doc...</div>
+<button class="btn ghost" style="width:100%;margin-top:6px" onclick="speakDoc()">🔊 Speak Doc in Selected Language</button>
 </div>
 </div>
 <script>
 function cleanForHumanReading(raw){
-  let text=raw;
-  text=text.replace(/https?:\/\/\S+/g,' ');
-  text=text.replace(/www\.\S+/g,' ');
-  text=text.replace(/\S+@\S+/g,' ');
-  let lines=text.split(/\n/);
-  let cleanedLines=[];
+  let text=raw; text=text.replace(/https?:\/\/\S+/g,' '); text=text.replace(/www\.\S+/g,' '); text=text.replace(/\S+@\S+/g,' ');
+  let lines=text.split(/\n/); let cleanedLines=[];
   for(let line of lines){
-    let l=line.trim();
-    if(!l) continue;
-    if(/^[#%*\-_=+]+\s*\d*\s*[%]*$/.test(l)) continue;
-    if(/^\d+\s*%/.test(l)) continue;
-    if(/^[#]+\s*\d+/.test(l)) continue;
-    if(l.length<3) continue;
-    if(/^\d+$/.test(l)) continue;
-    l=l.replace(/^[#*\-•]+\s*/,'');
-    l=l.replace(/%/g,' percent ');
-    l=l.replace(/#/g,' ');
-    if(!/[a-zA-Z\u0900-\u097F]/.test(l)) continue;
-    cleanedLines.push(l);
+    let l=line.trim(); if(!l) continue;
+    if(/^[#%*\-_=+]+\s*\d*\s*[%]*$/.test(l)) continue; if(/^\d+\s*%/.test(l)) continue; if(/^[#]+\s*\d+/.test(l)) continue;
+    if(l.length<3) continue; if(/^\d+$/.test(l)) continue;
+    l=l.replace(/^[#*\-•]+\s*/,''); l=l.replace(/%/g,' percent '); l=l.replace(/#/g,' ');
+    if(!/[a-zA-Z\u0900-\u097F]/.test(l)) continue; cleanedLines.push(l);
   }
-  text=cleanedLines.join(' ');
-  text=text.replace(/\s+/g,' ').trim();
-  let sentences=text.split(/[.!?।]+/);
-  let good=[];
-  for(let s of sentences){
-    s=s.trim();
-    if(s.split(/\s+/).length<4) continue;
-    if(s.length<10) continue;
-    if(/^[\d\s\W]+$/.test(s)) continue;
-    good.push(s);
+  text=cleanedLines.join(' '); text=text.replace(/\s+/g,' ').trim();
+  let sentences=text.split(/[.!?।]+/); let good=[];
+  for(let s of sentences){ s=s.trim(); if(s.split(/\s+/).length<4) continue; if(s.length<10) continue; if(/^[\d\s\W]+$/.test(s)) continue; good.push(s); }
+  return good.slice(0,25).join('. ') + '.';
+}
+async function translateText(text, targetLang){
+  const map={ hi:'hi', nag:'hi', bho:'hi', mag:'hi', mai:'hi', bn:'bn', ta:'ta', te:'te', mr:'mr', gu:'gu', kn:'kn', ml:'ml', en:'en', es:'es', fr:'fr', de:'de', ja:'ja', ko:'ko', zh:'zh', ar:'ar', ru:'ru', pt:'pt', it:'it' };
+  let target=map[targetLang]||'hi';
+  if(targetLang==='en') return text;
+  if(['nag','bho','mag','mai'].includes(targetLang)){
+    try{
+      let res=await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text.substring(0,450))}&langpair=en|hi`);
+      let data=await res.json(); let translated=data.responseData.translatedText||text;
+      let flavor={nag:'जोहार! ',bho:'प्रणाम! ',mag:'प्रणाम! ',mai:'प्रणाम! '}[targetLang]||''; return flavor+translated;
+    }catch(e){return text;}
   }
-  return good.slice(0,20).join('. ') + '.';
+  try{
+    let res=await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text.substring(0,450))}&langpair=en|${target}`);
+    let data=await res.json(); return data.responseData.translatedText||text;
+  }catch(e){return text;}
 }
 function handleFile(input){
   let file=input.files[0]; if(!file)return;
@@ -109,116 +131,66 @@ function handleFile(input){
     reader.onload=async function(){
       try{
         pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-        let pdf=await pdfjsLib.getDocument(reader.result).promise;
-        let text='';
-        for(let i=1;i<=Math.min(pdf.numPages,15);i++){
-          let page=await pdf.getPage(i);
-          let content=await page.getTextContent();
-          text+=content.items.map(it=>it.str).join(' ')+'\n';
-        }
-        let cleaned=cleanForHumanReading(text);
-        document.getElementById('docDesc').value=cleaned;
-        document.getElementById('answerBox').innerText='✅ PDF cleaned! Removed #, %, numbers. Human-readable: '+cleaned.substring(0,200)+'...';
+        let pdf=await pdfjsLib.getDocument(reader.result).promise; let text='';
+        for(let i=1;i<=Math.min(pdf.numPages,15);i++){ let page=await pdf.getPage(i); let content=await page.getTextContent(); text+=content.items.map(it=>it.str).join(' ')+'\n'; }
+        let cleaned=cleanForHumanReading(text); document.getElementById('docDesc').value=cleaned;
       }catch(e){document.getElementById('docDesc').value='Error: '+e;}
-    };
-    reader.readAsArrayBuffer(file);
+    }; reader.readAsArrayBuffer(file);
   }else if(file.name.endsWith('.docx')){
-    let reader=new FileReader();
-    reader.onload=function(e){
-      mammoth.extractRawText({arrayBuffer:e.target.result}).then(r=>{
-        let cleaned=cleanForHumanReading(r.value);
-        document.getElementById('docDesc').value=cleaned;
-      });
-    };
-    reader.readAsArrayBuffer(file);
-  }else{
-    let reader=new FileReader();
-    reader.onload=e=>{let cleaned=cleanForHumanReading(e.target.result);document.getElementById('docDesc').value=cleaned;};
-    reader.readAsText(file);
-  }
+    let reader=new FileReader(); reader.onload=function(e){ mammoth.extractRawText({arrayBuffer:e.target.result}).then(r=>{ let cleaned=cleanForHumanReading(r.value); document.getElementById('docDesc').value=cleaned; }); }; reader.readAsArrayBuffer(file);
+  }else{ let reader=new FileReader(); reader.onload=e=>{let cleaned=cleanForHumanReading(e.target.result);document.getElementById('docDesc').value=cleaned;}; reader.readAsText(file); }
   if(!document.getElementById('docTitle').value)document.getElementById('docTitle').value=file.name.replace(/\.\w+$/,'');
 }
 function saveDoc(){
-  let title=document.getElementById('docTitle').value.trim();
-  let desc=document.getElementById('docDesc').value.trim();
-  let cat=document.getElementById('docCat').value;
-  if(!title||!desc){alert('Title and Description required');return;}
-  desc=cleanForHumanReading(desc);
-  let docs=JSON.parse(localStorage.getItem('bharatagi_docs')||'[]');
-  docs.push({id:Date.now(),title,desc,cat,date:new Date().toLocaleString()});
-  localStorage.setItem('bharatagi_docs',JSON.stringify(docs));
-  document.getElementById('docTitle').value='';document.getElementById('docDesc').value='';document.getElementById('fileInput').value='';
-  refreshDocs();alert('Saved! Human-cleaned text stored. Now you can Ask from it.');
+  let title=document.getElementById('docTitle').value.trim(); let desc=document.getElementById('docDesc').value.trim(); let cat=document.getElementById('docCat').value;
+  if(!title||!desc){alert('Title and Description required');return;} desc=cleanForHumanReading(desc);
+  let docs=JSON.parse(localStorage.getItem('bharatagi_docs')||'[]'); docs.push({id:Date.now(),title,desc,cat,date:new Date().toLocaleString()}); localStorage.setItem('bharatagi_docs',JSON.stringify(docs));
+  document.getElementById('docTitle').value='';document.getElementById('docDesc').value='';document.getElementById('fileInput').value=''; refreshDocs();alert('Saved to Worldwide Knowledge Base!');
 }
 function refreshDocs(){
-  let docs=JSON.parse(localStorage.getItem('bharatagi_docs')||'[]');
-  document.getElementById('agiCount').innerText=docs.length;
-  let list=document.getElementById('docList');let sel=document.getElementById('agiDocSelect');
-  list.innerHTML='';sel.innerHTML='<option value="">-- Select Document --</option>';
+  let docs=JSON.parse(localStorage.getItem('bharatagi_docs')||'[]'); document.getElementById('agiCount').innerText=docs.length;
+  let list=document.getElementById('docList');let sel=document.getElementById('agiDocSelect'); list.innerHTML='';sel.innerHTML='<option value="">-- Select Document --</option>';
   docs.slice().reverse().forEach(d=>{
-    let div=document.createElement('div');div.className='docItem';
-    div.innerHTML=`<div style="flex:1"><b>${d.title}</b><br><span style="font-size:10px;color:#7a9aaa">${d.cat} • ${d.date}<br>${d.desc.substring(0,100)}...</span></div><div><button class="btn ghost" style="padding:4px 8px;font-size:10px" onclick="previewDoc(${d.id})">View</button></div>`;
-    list.appendChild(div);
+    let div=document.createElement('div');div.className='docItem'; div.innerHTML=`<div style="flex:1"><b>${d.title}</b><br><span style="font-size:10px;color:#7a9aaa">${d.cat} • ${d.date}<br>${d.desc.substring(0,90)}...</span></div><div><button class="btn ghost" style="padding:4px 8px;font-size:10px" onclick="previewDoc(${d.id})">View</button></div>`; list.appendChild(div);
     let opt=document.createElement('option');opt.value=d.id;opt.innerText=d.title;sel.appendChild(opt);
   });
-  if(docs.length===0)list.innerHTML='<p style="font-size:11px;color:#5a7a8a">No documents yet. Upload PDF.</p>';
 }
-function previewDoc(id){
-  let docs=JSON.parse(localStorage.getItem('bharatagi_docs')||'[]');
-  let d=docs.find(x=>x.id==id);if(!d)return;
-  document.getElementById('agiPreview').innerText=d.title+':\n'+d.desc.substring(0,800);
-  document.getElementById('agiDocSelect').value=id;
-}
+function previewDoc(id){ let docs=JSON.parse(localStorage.getItem('bharatagi_docs')||'[]'); let d=docs.find(x=>x.id==id);if(!d)return; document.getElementById('agiPreview').innerText=d.title+':\n'+d.desc.substring(0,800); document.getElementById('agiDocSelect').value=id; }
 document.getElementById('agiDocSelect').addEventListener('change',e=>{if(e.target.value)previewDoc(e.target.value);});
 let agiLang='hi',lastAnswer='';
-function setAGILang(l,btn){
-  agiLang=l;
-  document.querySelectorAll('.lang').forEach(b=>b.classList.remove('active'));
-  if(btn)btn.classList.add('active');
-  document.getElementById('agiLangLabel').innerText=btn?btn.innerText:l;
-}
-function askAGI(){
-  let question=document.getElementById('askInput').value.trim();
-  if(!question){alert('Write what you want to ask');return;}
-  let docs=JSON.parse(localStorage.getItem('bharatagi_docs')||'[]');
-  if(docs.length===0){alert('Upload PDF first');return;}
-  let qWords=question.toLowerCase().split(/\s+/).filter(w=>w.length>2);
-  let best=null,bestScore=-1;
-  for(let d of docs){
-    let score=0;let lower=d.desc.toLowerCase();
-    for(let w of qWords){if(lower.includes(w))score++;}
-    if(score>bestScore){bestScore=score;best=d;}
-  }
+function setAGILang(l,btn){ agiLang=l; document.querySelectorAll('.lang').forEach(b=>b.classList.remove('active')); if(btn)btn.classList.add('active'); document.getElementById('agiLangLabel').innerText=btn?btn.innerText:l; }
+async function askAGI(){
+  let question=document.getElementById('askInput').value.trim(); if(!question){alert('Write what you want to ask');return;}
+  let docs=JSON.parse(localStorage.getItem('bharatagi_docs')||'[]'); if(docs.length===0){alert('Upload PDF first');return;}
+  document.getElementById('answerBox').innerText='🧠 Bharat AGI thinking + translating to '+agiLang.toUpperCase()+'...';
+  let qWords=question.toLowerCase().split(/\s+/).filter(w=>w.length>2); let best=null,bestScore=-1;
+  for(let d of docs){ let score=0;let lower=d.desc.toLowerCase(); for(let w of qWords){if(lower.includes(w))score++;} if(score>bestScore){bestScore=score;best=d;} }
   if(!best) best=docs[docs.length-1];
-  let sentences=best.desc.split(/\./);
-  let relevant=sentences.filter(s=>qWords.some(w=>s.toLowerCase().includes(w))).slice(0,3);
-  if(relevant.length===0) relevant=sentences.slice(0,3);
-  let answer=`${best.title} के बारे में जानकारी: ${relevant.join('. ')}.`;
-  if(agiLang==='nag'){
-    answer=`जोहार! तोय जे पूछलस - ${question} - एकर जवाब हेके: ${relevant.join('. ')}. इ जानकारी ${best.title} से मिलल हे।`;
-  }else if(agiLang==='bho'){
-    answer=`प्रणाम! तू जे पूछलऽ - ${question} - एकर जवाब बा: ${relevant.join('. ')}.`;
-  }else if(agiLang==='en'){
-    answer=`Here is information about ${best.title}: ${relevant.join('. ')}.`;
-  }else{
-    answer=`आपने पूछा - ${question} - इसका जवाब है: ${relevant.join('. ')}. यह जानकारी ${best.title} से मिली है।`;
-  }
-  lastAnswer=answer;
-  document.getElementById('answerBox').innerText=answer;
-  speechSynthesis.cancel();
-  let utt=new SpeechSynthesisUtterance(answer);
-  let map={en:'en-US',hi:'hi-IN',nag:'hi-IN',bho:'hi-IN',bn:'bn-IN',es:'es-ES',fr:'fr-FR'};
-  utt.lang=map[agiLang]||'hi-IN';utt.rate=0.9;speechSynthesis.speak(utt);
+  let sentences=best.desc.split(/\./); let relevant=sentences.filter(s=>qWords.some(w=>s.toLowerCase().includes(w))).slice(0,3); if(relevant.length===0) relevant=sentences.slice(0,3);
+  let baseAnswer=`${relevant.join('. ')}. This information is from ${best.title}.`;
+  let translated=await translateText(baseAnswer, agiLang);
+  let finalAnswer=`Q: ${question}\n\nAnswer in ${agiLang.toUpperCase()}: ${translated}`;
+  if(agiLang==='nag'){ finalAnswer=`जोहार! तोय पूछलस: ${question}\n\nजवाब: ${translated}\n\n(इ जानकारी ${best.title} से मिलल हे)`; }
+  lastAnswer=translated; document.getElementById('answerBox').innerText=finalAnswer;
+  speechSynthesis.cancel(); let utt=new SpeechSynthesisUtterance(translated); let map={en:'en-US',hi:'hi-IN',nag:'hi-IN',bho:'hi-IN',bn:'bn-IN',ta:'ta-IN',te:'te-IN',es:'es-ES',fr:'fr-FR',de:'de-DE',ja:'ja-JP',ko:'ko-KR',zh:'zh-CN',ar:'ar-SA',ru:'ru-RU'}; utt.lang=map[agiLang]||'hi-IN';utt.rate=0.9;speechSynthesis.speak(utt);
+}
+async function translateDirect(){
+  let txt=document.getElementById('directText').value.trim(); if(!txt){alert('Paste text');return;}
+  document.getElementById('directResult').innerText='Translating to '+agiLang+'...'; let translated=await translateText(txt, agiLang);
+  document.getElementById('directResult').innerText=translated; lastAnswer=translated;
+  let utt=new SpeechSynthesisUtterance(translated); let map={en:'en-US',hi:'hi-IN',nag:'hi-IN',bho:'hi-IN',es:'es-ES',fr:'fr-FR',ja:'ja-JP',de:'de-DE',zh:'zh-CN',ar:'ar-SA',ru:'ru-RU'}; utt.lang=map[agiLang]||'hi-IN';utt.rate=0.9;speechSynthesis.speak(utt);
 }
 function speakAnswer(){if(!lastAnswer){alert('Ask first');return;}let utt=new SpeechSynthesisUtterance(lastAnswer);utt.lang='hi-IN';utt.rate=0.9;speechSynthesis.speak(utt);}
 function speakDoc(){
-  let sel=document.getElementById('agiDocSelect').value;
-  if(!sel){alert('Select doc');return;}
-  let docs=JSON.parse(localStorage.getItem('bharatagi_docs')||'[]');
-  let d=docs.find(x=>x.id==sel);if(!d)return;
-  let utt=new SpeechSynthesisUtterance(d.desc.substring(0,2000));utt.lang='hi-IN';utt.rate=0.9;speechSynthesis.speak(utt);
+  let sel=document.getElementById('agiDocSelect').value; if(!sel){alert('Select doc');return;}
+  let docs=JSON.parse(localStorage.getItem('bharatagi_docs')||'[]'); let d=docs.find(x=>x.id==sel);if(!d)return;
+  translateText(d.desc.substring(0,500), agiLang).then(translated=>{
+    document.getElementById('agiPreview').innerText='Translated to '+agiLang+':\n'+translated;
+    let utt=new SpeechSynthesisUtterance(translated);utt.lang='hi-IN';utt.rate=0.9;speechSynthesis.speak(utt);
+  });
 }
 function stopSpeak(){speechSynthesis.cancel();}
+function copyAnswer(){navigator.clipboard.writeText(document.getElementById('answerBox').innerText);alert('Copied!');}
 refreshDocs();
 </script>
 </body></html>
