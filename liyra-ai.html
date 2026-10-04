@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIYRA AI - Self-Coding Core | Bharat AGI 3026</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>body{font-family:Inter;background:#020B1A;color:#E0F7FA}.orbit{font-family:Orbitron}.glow{box-shadow:0 0 20px #00E5FF, 0 0 40px #00E5FF40}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}.float{animation:float 3s ease-in-out infinite}</style>
+</head>
+<body>
+<header class="border-b border-cyan-500/20 bg-black/40 backdrop-blur p-4 flex justify-between items-center">
+<div class="flex items-center gap-3"><div class="w-3 h-3 bg-cyan-400 rounded-full animate-ping"></div><span class="orbit text-cyan-400 font-bold">LIYRA AI</span><span class="text-xs text-gray-400 ml-2">Bharat AGI 3026</span></div>
+<a href="index.html" class="border border-yellow-500/50 text-yellow-400 px-4 py-1 rounded-full text-sm">← Home</a>
+</header>
+
+<div class="max-w-7xl mx-auto px-6 py-8">
+<h1 class="orbit text-3xl md:text-5xl text-cyan-300 font-extrabold">LIYRA AI - Self-Coding Core That Kills<br/>Untrained Models</h1>
+<p class="text-gray-400 mt-3">SELF-CODING • SELF-EVOLVING • SELF-GUARDING • From Generative AI to Self-Generative AI</p>
+
+<div class="mt-10 grid grid-cols-2 md:grid-cols-6 gap-3">
+<div id="step1" class="bg-[#0A1A2F] border border-cyan-500/50 rounded-xl p-4 text-center"><div class="text-2xl">🧑‍💻</div><div class="text-xs mt-2 font-bold">Expert Code</div></div>
+<div id="step2" class="bg-[#0A1A2F] border border-cyan-500/30 rounded-xl p-4 text-center opacity-40"><div class="text-2xl">👁️</div><div class="text-xs mt-2 font-bold">Liyra Reads</div></div>
+<div id="step3" class="bg-[#0A1A2F] border border-cyan-500/30 rounded-xl p-4 text-center opacity-40"><div class="text-2xl">🔄</div><div class="text-xs mt-2 font-bold">Rewrites Own Core</div></div>
+<div id="step4" class="bg-[#0A1A2F] border border-red-500/50 rounded-xl p-4 text-center opacity-40"><div class="text-2xl">🛡️🗑️</div><div class="text-xs mt-2 font-bold">Kill Switch</div></div>
+<div id="step5" class="bg-[#0A1A2F] border border-cyan-500/30 rounded-xl p-4 text-center opacity-40"><div class="text-2xl">🧬</div><div class="text-xs mt-2 font-bold">Pure Data Modeling</div></div>
+<div id="step6" class="bg-[#0A1A2F] border border-green-500/50 rounded-xl p-4 text-center opacity-40"><div class="text-2xl">🚀</div><div class="text-xs mt-2 font-bold">Faster Model Born</div></div>
+</div>
+
+<div class="mt-6 flex gap-4 flex-wrap">
+<button onclick="startLiyra()" class="bg-cyan-400 text-black font-bold px-8 py-3 rounded-full glow hover:scale-105 transition">▶ START LIYRA SELF-CODING</button>
+<button onclick="resetLiyra()" class="border border-gray-600 px-6 py-3 rounded-full">Reset</button>
+<span id="status" class="ml-4 text-cyan-300 text-sm py-3">Ready to self-code...</span>
+</div>
+
+<div class="grid md:grid-cols-3 gap-6 mt-10">
+<div class="md:col-span-2 bg-[#07182E]/80 border border-cyan-500/20 rounded-2xl p-6 relative">
+<pre id="codeBox" class="text-[11px] text-cyan-200 bg-black/50 p-4 rounded-lg h-64 overflow-auto">/* Expert Code Input */
+function trainAGI(data){
+  return model.train(data);
+}
+// Liyra will rewrite this...</pre>
+<div id="brain" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-cyan-500/20 blur-2xl opacity-0 transition-all"></div>
+</div>
+<div class="bg-[#0F1B2E] border border-red-500/30 rounded-2xl p-6 text-center">
+<h3 class="font-bold text-red-400">BAD MODEL TRASH</h3>
+<div id="trash" class="mt-4 space-y-2 text-left text-xs">
+<div class="bg-red-900/30 border border-red-500/30 p-2 rounded flex justify-between"><span>BAD MODEL v0.1 - untrained</span><span>⚠️</span></div>
+<div class="bg-red-900/30 border border-red-500/30 p-2 rounded flex justify-between"><span>BAD MODEL v0.2 - biased</span><span>⚠️</span></div>
+<div class="bg-red-900/30 border border-red-500/30 p-2 rounded flex justify-between"><span>BAD MODEL v0.3 - unstable</span><span>⚠️</span></div>
+</div>
+<div id="trashResult" class="mt-6 text-green-400 font-bold hidden">✓ All bad models eliminated! Pure model survived.</div>
+</div>
+</div>
+
+<div class="grid md:grid-cols-3 gap-4 mt-8">
+<div class="bg-[#0A1A2F] border border-cyan-500/20 rounded-xl p-5"><h4 class="font-bold text-cyan-300">Self-Coding</h4><p class="text-xs text-gray-400 mt-2">Autonomous rewrite of core logic, continuous self-optimization.</p></div>
+<div class="bg-[#0A1A2F] border border-yellow-500/20 rounded-xl p-5"><h4 class="font-bold text-yellow-300">Kill Switch</h4><p class="text-xs text-gray-400 mt-2">Detects & eliminates untrained/unstable models instantly. Immune system for AI.</p></div>
+<div class="bg-[#0A1A2F] border border-green-500/20 rounded-xl p-5"><h4 class="font-bold text-green-300">Data Modeling Engine</h4><p class="text-xs text-gray-400 mt-2">Pure, high-quality data modeling for accelerated learning. RSHA-ME-1881-1952 validated.</p></div>
+</div>
+</div>
+
+<script>
+let interval;
+function startLiyra(){
+  let step=1;
+  document.getElementById('status').innerText="Liyra reading expert code...";
+  document.getElementById('brain').style.opacity='1';
+  clearInterval(interval);
+  interval=setInterval(()=>{
+    if(step<=6){
+      document.getElementById('step'+step).classList.remove('opacity-40');
+      document.getElementById('step'+step).classList.add('glow','scale-105');
+      if(step>1){document.getElementById('step'+(step-1)).classList.remove('glow','scale-105');}
+      const codes=[
+`/* Expert Code Input */\nfunction trainAGI(data){\n return model.train(data);\n}`,
+`/* Liyra Reads */\n// Analyzing core logic...\n// Detected: slow training, untrained models`,
+`/* Rewrites Own Core */\nfunction trainAGI_optimized(data){\n data = filterPure(data);\n killUntrained(model);\n return quantumTrain(data);\n}`,
+`/* Kill Switch Activated */\n> Scanning models...\n> BAD MODEL v0.1 DELETED\n> BAD MODEL v0.2 DELETED\n> BAD MODEL v0.3 DELETED`,
+`/* Pure Data Modeling */\n> Pure dataset: 99.8% quality\n> Modeling: 100x faster\n> Verified: RSHA-ME-1881-1952`,
+`/* Faster Model Born! */\n🚀 Liyra v2.0 BORN\nTraining: 100x faster\nPower: 70% less\nStatus: Sovereign Offline AGI`
+      ];
+      document.getElementById('codeBox').innerText=codes[step-1];
+      if(step==4){
+        document.getElementById('trash').innerHTML='<div class="text-gray-500 italic">Crushing bad models...</div>';
+        setTimeout(()=>{document.getElementById('trash').innerHTML='<div class="bg-green-900/30 border border-green-500/30 p-2 rounded">✓ TRASH EMPTY - Pure model only</div>'; document.getElementById('trashResult').classList.remove('hidden');},800);
+      }
+      const msgs=["Reading...","Rewriting core...","Kill Switch ON!","Pure modeling...","Model Born!","Done!"];
+      document.getElementById('status').innerText=msgs[step-1];
+      step++;
+    }else{clearInterval(interval); document.getElementById('status').innerText="✓ LIYRA v2.0 Ready - Self-Coding Complete!"; document.getElementById('brain').style.opacity='0';}
+  },1200);
+}
+function resetLiyra(){
+  clearInterval(interval);
+  for(let i=1;i<=6;i++){document.getElementById('step'+i).classList.add('opacity-40');document.getElementById('step'+i).classList.remove('glow','scale-105');}
+  document.getElementById('step1').classList.remove('opacity-40');
+  document.getElementById('codeBox').innerText='/* Expert Code Input */\nfunction trainAGI(data){\n return model.train(data);\n}';
+  document.getElementById('trash').innerHTML=`<div class="bg-red-900/30 border border-red-500/30 p-2 rounded flex justify-between"><span>BAD MODEL v0.1 - untrained</span><span>⚠️</span></div><div class="bg-red-900/30 border border-red-500/30 p-2 rounded flex justify-between"><span>BAD MODEL v0.2 - biased</span><span>⚠️</span></div><div class="bg-red-900/30 border border-red-500/30 p-2 rounded flex justify-between"><span>BAD MODEL v0.3 - unstable</span><span>⚠️</span></div>`;
+  document.getElementById('trashResult').classList.add('hidden');
+  document.getElementById('status').innerText='Ready to self-code...';
+}
+</script>
+</body></html>
