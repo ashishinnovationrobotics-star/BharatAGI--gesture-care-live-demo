@@ -8,22 +8,31 @@
 body{margin:0;background:#040b14;color:#e6f6ff;overflow-x:hidden}
 header{position:sticky;top:0;z-index:100;background:rgba(4,11,20,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #123040;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
 nav{display:flex;flex-wrap:wrap;gap:5px}
-nav a{color:#9fe9e9;text-decoration:none;font-weight:700;padding:7px 12px;border-radius:20px;border:1px solid #1a3d4a;font-size:11px}
+nav a{color:#9fe9e9;text-decoration:none;font-weight:700;padding:7px 12px;border-radius:20px;border:1px solid #1a3d4a;font-size:11px;transition:0.2s}
+nav a:hover{transform:translateY(-1px)}
 nav a.active{background:#00d2d3;color:#021018}
 nav a.heritage{background:linear-gradient(90deg,#c9b896,#8b7355);color:#1a1610;border-color:#c9b896;font-weight:800}
 nav a.atma{background:linear-gradient(90deg,#FF9933,#FFFFFF,#138808);color:#000;border-color:#FF9933;font-weight:900;box-shadow:0 0 10px #FF993355}
+nav a.liyra{background:linear-gradient(90deg,#00E5FF,#00B4D8);color:#000;border-color:#00E5FF;font-weight:900;box-shadow:0 0 12px #00E5FF66}
+nav a.aghi{background:linear-gradient(90deg,#FFD700,#FFA500);color:#000;border-color:#FFD700;font-weight:900;box-shadow:0 0 12px #FFD70066}
 .hero{position:relative;padding:70px 20px 50px;text-align:center;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,#0a5a6a55,transparent 70%);border-radius:50%}
 .grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;padding:16px}
 .card{background:linear-gradient(180deg,#0c1a29,#09131f);border:1px solid #173040;border-radius:18px;padding:18px;transition:0.3s}
 .card:hover{transform:translateY(-4px);border-color:#00d2d3;box-shadow:0 10px 30px #00d2d355}
 .card.heritage-card{background:linear-gradient(180deg,#1c1912,#14120c);border-color:#8b7355}
+.card.liyra-card{background:linear-gradient(180deg,#071A2E,#0A2540);border-color:#00E5FF;box-shadow:0 0 20px #00E5FF22}
+.card.aghi-card{background:linear-gradient(180deg,#1A1500,#2A2000);border-color:#FFD700;box-shadow:0 0 20px #FFD70022}
 .btn{padding:12px 20px;border-radius:12px;border:none;font-weight:800;cursor:pointer;text-decoration:none;display:inline-block;margin:5px;font-size:13px;transition:0.2s}
-.btn:hover{transform:translateY(-2px)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 5px 15px #0005}
 .primary{background:#00d2d3;color:#021018}
 .atma-btn{background:linear-gradient(90deg,#FF9933,#FFFFFF,#138808);color:#000;border:2px solid #FF9933;font-weight:900;letter-spacing:0.3px;box-shadow:0 0 15px #FF993355}
+.liyra-btn{background:linear-gradient(90deg,#00E5FF,#00B4D8);color:#000;border:2px solid #00E5FF;font-weight:900;box-shadow:0 0 15px #00E5FF55}
+.aghi-btn{background:linear-gradient(90deg,#FFD700,#FFB700);color:#000;border:2px solid #FFD700;font-weight:900;box-shadow:0 0 15px #FFD70055}
 .badge{font-size:11px;background:#0f2a3a;padding:4px 10px;border-radius:20px;border:1px solid #1e4a5a;color:#7de9e9;margin:3px;display:inline-block}
 .badge.gold{background:#1f1a12;border-color:#8b7355;color:#c9b896}
+.badge.cyan{background:#0a2a3a;border-color:#00E5FF;color:#00E5FF}
+.badge.yellow{background:#2a2000;border-color:#FFD700;color:#FFD700}
 .tech{font-family:'Space Grotesk',sans-serif}
 </style>
 </head><body>
@@ -33,6 +42,8 @@ nav a.atma{background:linear-gradient(90deg,#FF9933,#FFFFFF,#138808);color:#000;
 <a class="active" href="index.html">Home</a>
 <a href="gesture.html">Gesture</a>
 <a href="bharatagi.html">Bharat AGI</a>
+<a class="liyra" href="liyra-ai.html">🧬 LIYRA AI</a>
+<a class="aghi" href="aghi-ai.html">🧠 AGHI + Agentic</a>
 <a class="heritage" href="heritage.html">🏛️ Heritage 1881-1952</a>
 <a class="atma" href="https://bharat-agi.vercel.app/" target="_blank">🇮🇳 Atmanirbhar Bharat AGI</a>
 <a href="founder.html">Founder</a>
@@ -43,10 +54,14 @@ nav a.atma{background:linear-gradient(90deg,#FF9933,#FFFFFF,#138808);color:#000;
 <div class="hero">
 <div class="badge">EXPO TANK FINALE 2026 • WORLDWIDE • 40+ LANGUAGES • MUSEUM GRADE ARCHIVE</div>
 <div class="badge gold">Rare Archive: Maxwell 1881 • Einstein 1952 Letter to S.N. Bose • Owner: Dr. Sushant Kumar Ghosh</div>
+<div class="badge cyan">🧬 LIYRA AI - Self-Coding Core That Kills Untrained Models - NEW</div>
+<div class="badge yellow">🧠 AGHI - Artificial General Human Intelligence + Agentic AI - NEW</div>
 <h1 class="tech" style="font-size:52px;line-height:0.95;margin:18px 0">India's First<br><span style="color:#00d2d3">Offline AGI</span> Now<br>For The Whole World</h1>
 <p style="max-width:700px;margin:auto;color:#8fb2c2;font-size:15px;line-height:1.5">Upload any English document → Auto-translate to Nagpuri, Bhojpuri, Magahi, Maithili, Hindi, Tamil, Telugu + Spanish, French, German, Japanese, Arabic, Chinese, Russian, Portuguese. Human-like speaking, no # % reading. Gesture + Motion AI + Worldwide Voice. <br><b style="color:#c9b896">From 1881 Maxwell to 3026 - Bharat ki vaigyanik virasat.</b></p>
 
 <div style="margin-top:24px;display:flex;justify-content:center;flex-wrap:wrap">
+<a href="liyra-ai.html" class="btn liyra-btn">🧬 LIYRA AI - Self-Coding Core That Kills Untrained Models →</a>
+<a href="aghi-ai.html" class="btn aghi-btn">🧠 AGHI - Artificial General Human Intelligence + Agentic AI →</a>
 <a href="gesture.html" class="btn primary">🖐️ Live Gesture Demo →</a>
 <a href="bharatagi.html" class="btn" style="background:#102a3a;color:#8fe9e9;border:1px solid #1d4a5a">🌍 Worldwide Translator →</a>
 <a href="heritage.html" class="btn" style="background:linear-gradient(90deg,#c9b896,#8b7355);color:#1a1610;border:1px solid #c9b896">🏛️ Rare Archive 1881-1952 →</a>
@@ -60,8 +75,41 @@ nav a.atma{background:linear-gradient(90deg,#FF9933,#FFFFFF,#138808);color:#000;
 <div class="badge">PDF → Translate → Speak</div>
 <div class="badge">Ask AI from PDF</div>
 <div class="badge">Motion Capture Gesture</div>
+<div class="badge cyan">Self-Coding • Self-Evolving • Self-Guarding</div>
+<div class="badge yellow">Reasoning → Empathy → Action</div>
 <div class="badge gold">Maxwell 1881 • Einstein 1952</div>
 <div class="badge" style="background:linear-gradient(90deg,#FF9933,#fff,#138808);color:#000;border-color:#FF9933;font-weight:800">🇮🇳 Atmanirbhar Bharat AGI Live</div>
+</div>
+</div>
+
+<!-- NEW SECTION - LIYRA + AGHI DETAILED CARDS WITH BUTTONS -->
+<div class="grid">
+<div class="card liyra-card">
+<div style="display:flex;justify-content:space-between;align-items:center"><span class="badge cyan">NEW • 2026 • SELF-CODING AI</span><span style="font-size:10px;color:#00E5FF">RSHA-ME-1881-1952</span></div>
+<h3>🧬 LIYRA AI - Self-Coding Core That Kills Untrained Models</h3>
+<p style="color:#7de9e9;font-size:13px;line-height:1.5"><b>From Generative AI to Self-Generative AI.</b><br>
+Flow: Expert Code → Liyra Reads → Rewrites Own Core → Kill Switch for Untrained Models → Pure Data Modeling → Faster Model Born.<br><br>
+<b>Self-Coding:</b> Autonomous rewrite of core logic.<br>
+<b>Kill Switch:</b> Detects & eliminates untrained/unstable models (BAD MODEL trash).<br>
+<b>Data Modeling Engine:</b> Pure 99.8% quality, 100x faster.</p>
+<div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+<span class="badge cyan">Self-Coding</span><span class="badge cyan">Self-Evolving</span><span class="badge cyan">Self-Guarding</span><span class="badge cyan">Kill Switch</span>
+</div>
+<a href="liyra-ai.html" style="display:block;margin-top:14px;background:linear-gradient(90deg,#00E5FF,#00B4D8);color:#000;text-align:center;padding:12px;border-radius:12px;font-weight:900;text-decoration:none;box-shadow:0 0 15px #00E5FF55">🧬 EXPLORE LIYRA AI LIVE DEMO →</a>
+<p style="font-size:10px;color:#5a8a9a;margin-top:6px;text-align:center">Click to open working page: liyra-ai.html - Terminal + Trash Animation</p>
+</div>
+
+<div class="card aghi-card">
+<div style="display:flex;justify-content:space-between;align-items:center"><span class="badge yellow">NEW • 2026 • AGHI + AGENTIC AI</span><span style="font-size:10px;color:#FFD700">HUMAN + AI SYMBIOSIS</span></div>
+<h3>🧠 AGHI - Artificial General Human Intelligence + Agentic AI</h3>
+<p style="color:#c9b896;font-size:13px;line-height:1.5"><b>Not just chatbot — Human-like reasoning + empathy + action.</b><br>
+Agentic Workflow: <b>Reasoning</b> (Logical analysis → Self-reflection → Planning) → <b>Empathy</b> (Emotional understanding → Context awareness → Trust) → <b>Action</b> (Autonomous execution → Real-world interaction → Adaptive response).<br><br>
+Engineer-Farmer Model: NIT Jamshedpur student builds &lt;₹5000 robot + Farmer uses in Nagpuri/Bhojpuri.</p>
+<div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+<span class="badge yellow">Reasoning</span><span class="badge yellow">Empathy</span><span class="badge yellow">Action</span><span class="badge yellow">Agentic</span><span class="badge yellow">Self-Evolving</span>
+</div>
+<a href="aghi-ai.html" style="display:block;margin-top:14px;background:linear-gradient(90deg,#FFD700,#FFB700);color:#000;text-align:center;padding:12px;border-radius:12px;font-weight:900;text-decoration:none;box-shadow:0 0 15px #FFD70055">🧠 EXPLORE AGHI + AGENTIC AI LIVE →</a>
+<p style="font-size:10px;color:#8a7a5a;margin-top:6px;text-align:center">Click to open working page: aghi-ai.html - Ranchi Farmer Demo + Agentic Cycle</p>
 </div>
 </div>
 
@@ -74,8 +122,8 @@ nav a.atma{background:linear-gradient(90deg,#FF9933,#FFFFFF,#138808);color:#000;
 <div class="grid">
 <div class="card" style="border-color:#FF9933;background:linear-gradient(180deg,#1c1912,#14120c)"><h3>🇮🇳 Atmanirbhar Bharat AGI - Main Portal</h3><p style="color:#a89a7d;font-size:13px">Our official production portal - India's First Offline AGI with JWT Auth, Supabase Vector DB, Razorpay, 22 Languages. Live at bharat-agi.vercel.app - Built for Viksit Bharat 2047 & Atmanirbhar Bharat Mission. Click below to visit main portal.</p><a href="https://bharat-agi.vercel.app/" target="_blank" style="color:#FF9933;font-weight:900;text-decoration:none">🇮🇳 Visit Atmanirbhar Bharat AGI Portal →</a><br><span class="badge" style="background:linear-gradient(90deg,#FF9933,#fff,#138808);color:#000;font-weight:800">🇮🇳 Atmanirbhar Bharat</span> <span class="badge">Market Ready</span> <span class="badge">Viksit Bharat 2047</span></div>
 <div class="card"><h3>👤 Founder - Ashish Kumar</h3><p style="color:#8fb2c2;font-size:13px">MCA 3rd Sem, Jharkhand Rai University. Founder & Director MVA Robotics Innovation. 2nd Prize Handiix JUT, IIT Hyderabad Incubator Selected, ICAFMES 2026, AGRICO Bangkok 2025, Sri Lanka Conference. mvaroboticsinnovation@gmail.com | 6239066177</p><a href="founder.html" style="color:#00d2d3">Meet Founder →</a></div>
-<div class="card"><h3>📜 Timeline 1881 → 3026</h3><p style="color:#8fb2c2;font-size:12px;line-height:1.6"><b>1881</b> Maxwell • <b>1948</b> Differential Calculus • <b>1952</b> Einstein to Bose • <b>1956</b> Tensor Calculus • <b>2025</b> AGRICO Bangkok • <b>2026</b> ICAFMES, Handiix 2nd Prize, IIT Hyderabad Incubator • <b>2026 Finale</b> Bharat AGI 3026 x Gesture Care • <b>3026 Vision</b> Quantum AGI</p><a href="heritage.html" style="color:#c9b896">View Full Timeline →</a></div>
+<div class="card"><h3>📜 Timeline 1881 → 3026</h3><p style="color:#8fb2c2;font-size:12px;line-height:1.6"><b>1881</b> Maxwell • <b>1948</b> Differential Calculus • <b>1952</b> Einstein to Bose • <b>1956</b> Tensor Calculus • <b>2025</b> AGRICO Bangkok • <b>2026</b> ICAFMES, Handiix 2nd Prize, IIT Hyderabad Incubator • <b>2026 Finale</b> Bharat AGI 3026 x Gesture Care • <b>2026 NEW</b> LIYRA Self-Coding + AGHI Agentic AI • <b>3026 Vision</b> Quantum AGI</p><a href="heritage.html" style="color:#c9b896">View Full Timeline →</a></div>
 </div>
 
-<div style="text-align:center;padding:30px;color:#5a7a8a;font-size:12px">Built by Ashish Kumar • MCA 3rd Sem • Jharkhand Rai University • Founder MVA Robotics Innovation • Email: mvaroboticsinnovation@gmail.com • Contact: 6239066177 • Ranchi, Jharkhand, India → Worldwide • For Viksit Bharat 2047 & World<br>Atmanirbhar Bharat AGI Portal: <a href="https://bharat-agi.vercel.app/" target="_blank" style="color:#FF9933;font-weight:800">https://bharat-agi.vercel.app/</a> • Gesture Care: https://bharatagi-gesture-care-live-demo.vercel.app/ • Owner: Dr. Sushant Kumar Ghosh Collection • Catalog No. RSHA-ME-1881-1952</div>
+<div style="text-align:center;padding:30px;color:#5a7a8a;font-size:12px">Built by Ashish Kumar • MCA 3rd Sem • Jharkhand Rai University • Founder MVA Robotics Innovation • Email: mvaroboticsinnovation@gmail.com • Contact: 6239066177 • Ranchi, Jharkhand, India → Worldwide • For Viksit Bharat 2047 & World<br>Atmanirbhar Bharat AGI Portal: <a href="https://bharat-agi.vercel.app/" target="_blank" style="color:#FF9933;font-weight:800">https://bharat-agi.vercel.app/</a> • Gesture Care: https://bharatagi-gesture-care-live-demo.vercel.app/ • <a href="liyra-ai.html" style="color:#00E5FF;font-weight:800">🧬 LIYRA AI Live</a> • <a href="aghi-ai.html" style="color:#FFD700;font-weight:800">🧠 AGHI + Agentic AI Live</a> • Owner: Dr. Sushant Kumar Ghosh Collection • Catalog No. RSHA-ME-1881-1952</div>
 </body></html>
