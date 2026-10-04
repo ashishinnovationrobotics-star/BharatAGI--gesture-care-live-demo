@@ -2,89 +2,134 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AGHI - Artificial General Human Intelligence + Agentic AI | Bharat AGI 3026</title>
+<title>AGHI - Artificial General Human Intelligence + Agentic AI | Bharat AGI 3026 Worldwide</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://unpkg.com/mammoth@1.6.0/mammoth.browser.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-<style>body{font-family:Inter;background:#020812;color:#E0F7FA}.orbit{font-family:Orbitron}.glow{box-shadow:0 0 20px #FFD70066, 0 0 40px #00E5FF33}</style>
+<style>
+body{font-family:Inter;background:#020812;color:#E0F7FA}
+.orbit{font-family:Orbitron}
+.glow{box-shadow:0 0 20px #FFD70066, 0 0 40px #00E5FF33}
+@keyframes aghiPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.aghi-init{animation:aghiPulse 1.5s ease-in-out infinite}
+</style>
 </head>
 <body>
-<header class="border-b border-yellow-500/20 bg-black/40 backdrop-blur p-4 flex justify-between items-center">
-<div class="flex items-center gap-3"><div class="w-2 h-2 bg-yellow-400 rounded-full animate-ping"></div><span class="orbit text-yellow-300 font-bold">AGHI</span><span class="text-xs text-gray-400 ml-2">Bharat AGI 3026 Worldwide</span></div>
-<a href="index.html" class="border border-cyan-500/50 text-cyan-400 px-4 py-1 rounded-full text-sm">← Home</a>
+<header class="sticky top-0 z-50 border-b border-yellow-500/20 bg-black/60 backdrop-blur p-3 flex justify-between items-center">
+<div class="flex items-center gap-3"><span class="orbit text-[#FFD700] font-extrabold">AGHI</span><span class="text-xs text-gray-400">Bharat AGI 3026 • RSHA-ME-1881-1952</span></div>
+<div class="flex gap-2">
+<select id="langSelect" class="bg-[#0A1A2F] border border-cyan-500/30 text-cyan-300 text-xs rounded-full px-3 py-1">
+<optgroup label="🇮🇳 Indian Local"><option value="hi">Hindi</option><option value="nag">Nagpuri</option><option value="bho">Bhojpuri</option><option value="mag">Magahi</option><option value="mai">Maithili</option><option value="bn">Bengali</option><option value="ta">Tamil</option><option value="te">Telugu</option></optgroup>
+<optgroup label="🌍 Foreign"><option value="en">English</option><option value="es">Spanish</option><option value="fr">French</option><option value="de">German</option><option value="ja">Japanese</option><option value="ar">Arabic</option></optgroup>
+</select>
+<a href="index.html" class="border border-cyan-500/50 text-cyan-400 px-3 py-1 rounded-full text-xs">← Home</a>
+</div>
 </header>
 
-<div class="max-w-7xl mx-auto px-6 py-8">
-<h1 class="orbit text-3xl md:text-5xl font-extrabold text-center"><span class="text-[#FFD700]">AGHI - Artificial General Human Intelligence</span><br><span class="text-white">+ Agentic AI</span></h1>
-
-<div class="mt-10 grid md:grid-cols-2 gap-8 items-center">
-<div class="relative bg-[#0A1A2F]/60 border border-cyan-500/20 rounded-3xl p-8 flex justify-center">
-<div class="text-8xl animate-pulse">🧠</div>
-<p class="absolute bottom-4 text-xs text-cyan-300">Human + AI Symbiosis • Collaborative • Synergistic • Ethical Partnership</p>
+<div id="initOverlay" class="fixed inset-0 bg-[#020812]/95 z-[100] flex flex-col items-center justify-center">
+<div class="text-8xl aghi-init">🧠</div>
+<h1 class="orbit text-4xl font-extrabold mt-6"><span class="text-[#FFD700]">AGHI</span> <span class="text-white">Initialization</span></h1>
+<div class="w-80 h-1 bg-gray-800 rounded-full mt-6 overflow-hidden"><div id="initBar" class="h-full bg-gradient-to-r from-[#00E5FF] to-[#FFD700] w-0"></div></div>
+<p id="initText" class="text-cyan-300 text-sm mt-4 font-mono">> Loading Human + AI Symbiosis...</p>
 </div>
 
-<div>
-<h3 class="orbit text-cyan-300 text-sm tracking-widest">AGENTIC WORKFLOW</h3>
-<div class="grid grid-cols-3 gap-3 mt-4">
-<div id="w1" class="bg-[#0F1F3A] border border-yellow-500/50 rounded-2xl p-4 text-center cursor-pointer hover:scale-105 transition" onclick="activate(1)"><div class="text-3xl">🧠</div><div class="font-bold text-yellow-300 mt-2 text-sm">Reasoning</div><div class="text-[10px] text-gray-400 mt-1">Logical analysis<br>→ Self-reflection<br>→ Planning</div></div>
-<div id="w2" class="bg-[#0F1F3A] border border-cyan-500/30 rounded-2xl p-4 text-center opacity-50 cursor-pointer" onclick="activate(2)"><div class="text-3xl">🫂</div><div class="font-bold text-cyan-300 mt-2 text-sm">Empathy</div><div class="text-[10px] text-gray-400 mt-1">Emotional understanding<br>→ Context awareness<br>→ Trust</div></div>
-<div id="w3" class="bg-[#0F1F3A] border border-cyan-500/30 rounded-2xl p-4 text-center opacity-50 cursor-pointer" onclick="activate(3)"><div class="text-3xl">⚙️🚀</div><div class="font-bold text-cyan-300 mt-2 text-sm">Action</div><div class="text-[10px] text-gray-400 mt-1">Autonomous execution<br>→ Real-world interaction<br>→ Adaptive response</div></div>
+<div class="max-w-7xl mx-auto px-4 py-6">
+<h1 class="orbit text-2xl md:text-4xl font-extrabold text-center"><span class="text-[#FFD700]">AGHI - Artificial General Human Intelligence</span><br><span class="text-white">+ Agentic AI</span></h1>
+
+<div class="mt-8 grid md:grid-cols-3 gap-6">
+<div class="md:col-span-1 bg-[#0A1A2F]/60 border border-cyan-500/20 rounded-3xl p-6 flex flex-col items-center">
+<div id="brainIcon" class="text-7xl">🧠</div>
+<div class="text-[11px] text-cyan-300 text-center mt-3">Human + AI Symbiosis • Collaborative • Ethical Partnership</div>
+<div id="reasoningLight" class="mt-4 flex gap-2"><span class="w-2 h-2 rounded-full bg-yellow-400"></span><span class="w-2 h-2 rounded-full bg-gray-700"></span><span class="w-2 h-2 rounded-full bg-gray-700"></span></div>
+<p id="aghiStatus" class="text-xs text-yellow-300 mt-2 font-mono">Ready - Upload PDF/Word</p>
+</div>
+<div class="md:col-span-2">
+<h3 class="orbit text-cyan-300 text-xs tracking-widest">AGENTIC WORKFLOW - LIVE</h3>
+<div class="grid grid-cols-3 gap-3 mt-3">
+<div id="w1" class="bg-[#0F1F3A] border border-yellow-500/50 rounded-2xl p-4 text-center glow"><div class="text-2xl">🧠</div><div class="font-bold text-yellow-300 mt-1 text-xs">Reasoning</div><div class="text-[9px] text-gray-400">Logical analysis → Planning</div><div class="w-full h-1 bg-gray-800 rounded mt-2"><div id="f1" class="h-full bg-yellow-400 w-0 rounded"></div></div></div>
+<div id="w2" class="bg-[#0F1F3A] border border-cyan-500/20 rounded-2xl p-4 text-center opacity-60"><div class="text-2xl">🫂</div><div class="font-bold text-cyan-300 mt-1 text-xs">Empathy</div><div class="text-[9px] text-gray-400">Context awareness → Trust</div><div class="w-full h-1 bg-gray-800 rounded mt-2"><div id="f2" class="h-full bg-cyan-400 w-0 rounded"></div></div></div>
+<div id="w3" class="bg-[#0F1F3A] border border-cyan-500/20 rounded-2xl p-4 text-center opacity-60"><div class="text-2xl">⚙️🚀</div><div class="font-bold text-cyan-300 mt-1 text-xs">Action</div><div class="text-[9px] text-gray-400">Autonomous execution</div><div class="w-full h-1 bg-gray-800 rounded mt-2"><div id="f3" class="h-full bg-green-400 w-0 rounded"></div></div></div>
+</div>
+</div>
 </div>
 
-<div class="mt-6 bg-black/60 rounded-xl p-4 border border-yellow-500/20">
-<div class="flex justify-between items-center"><span class="text-xs text-gray-400">Live Agentic Demo - Engineer Farmer Model</span><span id="demoStatus" class="text-xs text-yellow-400">Click Reasoning to start</span></div>
-<div id="demoLog" class="mt-3 text-xs font-mono text-cyan-200 h-24 overflow-auto bg-[#071121] p-3 rounded">> AGHI System Ready...
-> Waiting for task... Farmer: "Fasal me daag hai"
+<div class="mt-8 grid md:grid-cols-5 gap-6">
+<div class="md:col-span-2 bg-[#0A1A2F]/80 border border-yellow-500/20 rounded-2xl p-5">
+<h3 class="orbit text-yellow-300 text-sm">📄 Add Knowledge - PDF / Word</h3>
+<div id="dropZone" class="mt-4 border-2 border-dashed border-cyan-500/30 rounded-xl p-6 text-center cursor-pointer">
+<div class="text-3xl">📤</div><p class="text-xs text-gray-400 mt-2">Drag & Drop PDF, DOCX, TXT or Click</p>
+<input type="file" id="fileInput" accept=".pdf,.docx,.doc,.txt" class="hidden">
 </div>
-<button onclick="runAgentic()" class="mt-4 bg-yellow-400 text-black font-bold px-6 py-2 rounded-full w-full">▶ RUN AGENTIC CYCLE - Ranchi Farmer Demo</button>
-</div>
-</div>
-</div>
-
-<div class="grid md:grid-cols-4 gap-4 mt-10">
-<div class="bg-[#0A1A2F] border border-yellow-500/30 rounded-xl p-5"><div class="text-xl">💬✨</div><h4 class="font-bold text-yellow-200 mt-2 text-sm">Not just chatbot</h4><p class="text-[11px] text-gray-400 mt-2">Beyond simple Q&A • Proactive decision-making</p></div>
-<div class="bg-[#0A1A2F] border border-yellow-500/30 rounded-xl p-5"><div class="text-xl">🧠🔗</div><h4 class="font-bold text-yellow-200 mt-2 text-sm">Human-like reasoning</h4><p class="text-[11px] text-gray-400 mt-2">Common-sense reasoning • Causal understanding</p></div>
-<div class="bg-[#0A1A2F] border border-cyan-500/30 rounded-xl p-5"><div class="text-xl">🤖</div><h4 class="font-bold text-yellow-200 mt-2 text-sm">Agentic AI acts autonomously</h4><p class="text-[11px] text-gray-400 mt-2">Self-directed goals • Multi-step orchestration</p></div>
-<div class="bg-[#0A1A2F] border border-yellow-500/30 rounded-xl p-5"><div class="text-xl">🧬</div><h4 class="font-bold text-yellow-200 mt-2 text-sm">Genetic Engineering self-evolving</h4><p class="text-[11px] text-gray-400 mt-2">Self-improving architecture • Evolutionary learning</p></div>
+<div id="docInfo" class="mt-4 hidden"><p id="docName" class="text-[11px]"></p><textarea id="docPreview" class="w-full mt-2 h-24 bg-black/50 border border-gray-700 rounded text-[10px] p-2 text-gray-400"></textarea></div>
 </div>
 
-<footer class="mt-10 border-t border-yellow-500/20 pt-4 flex justify-between text-xs text-gray-500"><span>Human + AI Symbiosis • Collaborative • Synergistic • Ethical Partnership</span><span class="text-yellow-300">BHARAT AGI 3026 • WORLDWIDE</span></footer>
+<div class="md:col-span-3 bg-[#0F1B2E] border border-cyan-500/30 rounded-2xl p-5 flex flex-col">
+<div class="flex justify-between"><h3 class="orbit text-cyan-300 text-sm">💬 Chat with AGHI - Human Language AI</h3><button onclick="toggleSpeak()" id="speakToggle" class="text-[10px] bg-cyan-500 text-black px-3 py-1 rounded-full font-bold">🔊 Voice ON</button></div>
+<div id="chatBox" class="mt-4 h-80 overflow-y-auto bg-[#020812] rounded-xl p-4 space-y-3 border border-gray-800"></div>
+<div class="mt-4 flex gap-2">
+<input id="userInput" type="text" placeholder="Ask in Hindi, Nagpuri, Bhojpuri, English, Spanish..." class="flex-1 bg-black/60 border border-cyan-500/30 rounded-full px-4 py-3 text-sm outline-none">
+<button onclick="sendMessage()" class="bg-gradient-to-r from-[#00E5FF] to-[#FFD700] text-black font-bold px-6 py-3 rounded-full text-sm">Send →</button>
+</div>
+</div>
+</div>
 </div>
 
 <script>
-let current=0;
-function activate(n){
- for(let i=1;i<=3;i++){document.getElementById('w'+i).classList.add('opacity-50'); document.getElementById('w'+i).classList.remove('border-yellow-500/50','glow');}
- document.getElementById('w'+n).classList.remove('opacity-50');
- document.getElementById('w'+n).classList.add('border-yellow-500/50','glow');
- current=n;
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+let docText="",docChunks=[],voiceOn=true;
+function cleanForSpeech(t){return t.replace(/[#]/g,' ').replace(/[%]/g,' percent ').replace(/[*]/g,' ').replace(/[@]/g,' at ').replace(/\s+/g,' ').trim();}
+function cleanForDisplay(t){return t.replace(/according to (the )?pdf/gi,'').replace(/as per (the )?pdf/gi,'').replace(/according to (the )?document/gi,'').replace(/based on (the )?pdf/gi,'').replace(/reference to pdf/gi,'').replace(/doc reference/gi,'').replace(/pdf reference/gi,'').replace(/\s+/g,' ').trim();}
+let dropZone=document.getElementById('dropZone'),fileInput=document.getElementById('fileInput');
+dropZone.addEventListener('click',()=>fileInput.click());
+dropZone.addEventListener('dragover',(e)=>{e.preventDefault();});
+dropZone.addEventListener('drop',(e)=>{e.preventDefault();handleFile(e.dataTransfer.files[0]);});
+fileInput.addEventListener('change',(e)=>{handleFile(e.target.files[0]);});
+async function handleFile(file){
+ if(!file) return;
+ document.getElementById('docInfo').classList.remove('hidden');
+ document.getElementById('docName').innerText=file.name;
+ let text='';
+ if(file.name.endsWith('.pdf')){
+  const buf=await file.arrayBuffer(); const pdf=await pdfjsLib.getDocument({data:buf}).promise;
+  for(let i=1;i<=pdf.numPages;i++){const page=await pdf.getPage(i); const c=await page.getTextContent(); text+=c.items.map(it=>it.str).join(' ')+' ';}
+ }else if(file.name.endsWith('.docx')){const buf=await file.arrayBuffer(); const r=await mammoth.extractRawText({arrayBuffer:buf}); text=r.value;}
+ else{text=await file.text();}
+ docText=text; docChunks=text.match(/(.{1,800})/g)||[text];
+ document.getElementById('docPreview').value=text.slice(0,2000);
+ triggerWorkflow(2); setTimeout(()=>triggerWorkflow(3),600);
+ addMessage('AGHI','Document loaded! Ask me anything in Nagpuri, Bhojpuri, Hindi, Spanish, French - I will answer directly without saying according to pdf.',false);
 }
-function runAgentic(){
- const log=document.getElementById('demoLog');
- const status=document.getElementById('demoStatus');
- let steps=[
-  "> Task: Help farmer in Ranchi with crop disease... Language: Nagpuri",
-  "> [Reasoning] Logical analysis: Leaf spots = fungal infection 87% prob",
-  "> [Reasoning] Self-reflection: Need local language, offline <₹5000 solution",
-  "> [Empathy] Emotional: Farmer anxious about yield loss",
-  "> [Empathy] Context: Location Ranchi, Nagpuri, small holder",
-  "> [Action] Autonomous: Generating low-cost nano-spray formula (Dr. Sushant Archive RSHA-ME-1881-1952)",
-  "> [Action] Real-world: Sending to NIT Jamshedpur student robot for mixing",
-  "> ✓ Complete: Farmer gets Nagpuri voice: 'Chinta na karu, dawa lagao' + Student gets data. Engineer + Farmer Co-Creator!"
- ];
- log.innerHTML="";
- let i=0;
- activate(1);
- let iv=setInterval(()=>{
-   if(i<steps.length){
-     log.innerHTML+=steps[i]+"<br>";
-     log.scrollTop=log.scrollHeight;
-     if(i==2)activate(1);
-     if(i==4)activate(2);
-     if(i==6)activate(3);
-     status.innerText="Step "+(i+1)+"/"+steps.length;
-     i++;
-   }else{clearInterval(iv); status.innerText="✓ Agentic Cycle Complete - Engineer Farmer Model Success"; }
- },700);
+function triggerWorkflow(s){for(let i=1;i<=3;i++){document.getElementById('w'+i).classList.add('opacity-60');document.getElementById('f'+i).style.width='0%';}document.getElementById('w'+s).classList.remove('opacity-60');document.getElementById('f'+s).style.width='100%';}
+function findRelevantChunk(q){if(!docText) return ''; let best='',max=0; for(let ch of docChunks){let sc=0; for(let w of q.toLowerCase().split(' ')){if(w.length>3 && ch.toLowerCase().includes(w)) sc++;} if(sc>max){max=sc;best=ch;}} return best||docChunks[0]||'';}
+async function translateText(t, target){
+ let apiTarget=target; if(['nag','bho','mag'].includes(target)) apiTarget='hi'; if(apiTarget==='en') return t;
+ try{const res=await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(t.slice(0,400))}&langpair=en|${apiTarget}`); const d=await res.json(); return d.responseData.translatedText||t;}catch{return t;}
 }
+function addMessage(who,text,isUser){
+ const box=document.getElementById('chatBox'); const div=document.createElement('div'); div.className='flex gap-2 '+(isUser?'justify-end':'');
+ div.innerHTML=isUser?`<div class="bg-cyan-600 text-black rounded-xl p-3 text-xs max-w-[80%]">${text}</div>`: `<div class="w-6 h-6 rounded-full bg-yellow-500 flex items-center justify-center text-[10px]">AGHI</div><div class="bg-[#0A1A2F] border border-yellow-500/20 rounded-xl p-3 text-xs max-w-[85%]">${text}</div>`;
+ box.appendChild(div); box.scrollTop=box.scrollHeight;
+}
+async function sendMessage(){
+ const input=document.getElementById('userInput'); const q=input.value.trim(); if(!q) return;
+ addMessage('You',q,true); input.value=''; triggerWorkflow(1);
+ let rel=findRelevantChunk(q);
+ let base=rel?`${rel.slice(0,600)} In simple terms, this directly answers your question: ${q}.`:`You asked: ${q}. As AGHI, I provide human-like practical answer. For Ranchi farmer in Nagpuri: Chinta na karu, samadhan hai. For NIT student: low-cost solution under 5000 rupees, offline.`;
+ base=cleanForDisplay(base);
+ const target=document.getElementById('langSelect').value;
+ let translated=await translateText(base,target); translated=cleanForDisplay(translated);
+ addMessage('AGHI',translated,false);
+ if(voiceOn){let speak=cleanForSpeech(translated); let u=new SpeechSynthesisUtterance(speak); u.rate=0.95; speechSynthesis.cancel(); speechSynthesis.speak(u);}
+ triggerWorkflow(3);
+}
+document.getElementById('userInput').addEventListener('keydown',(e)=>{if(e.key==='Enter') sendMessage();});
+function toggleSpeak(){voiceOn=!voiceOn; document.getElementById('speakToggle').innerText=voiceOn?'🔊 Voice ON':'🔇 Voice OFF'; if(!voiceOn) speechSynthesis.cancel();}
+window.addEventListener('load',()=>{
+ const bar=document.getElementById('initBar'), txt=document.getElementById('initText');
+ const msgs=["> Loading Human + AI Symbiosis... 20%","> Reasoning Engine... 45%","> Empathy Module (Nagpuri/Bhojpuri)... 70%","> Action Layer + Engineer-Farmer... 90%","> AGHI Ready ✓ 100%"];
+ let i=0; let iv=setInterval(()=>{if(i<msgs.length){bar.style.width=((i+1)*20)+'%'; txt.innerText=msgs[i]; i++;}else{clearInterval(iv); setTimeout(()=>{document.getElementById('initOverlay').style.display='none';},600);}},500);
+});
 </script>
-</body></html>
+</body>
+</html>
