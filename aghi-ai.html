@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGHI - Artificial General Human Intelligence + Agentic AI | Bharat AGI 3026</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>body{font-family:Inter;background:#020812;color:#E0F7FA}.orbit{font-family:Orbitron}.glow{box-shadow:0 0 20px #FFD70066, 0 0 40px #00E5FF33}</style>
+</head>
+<body>
+<header class="border-b border-yellow-500/20 bg-black/40 backdrop-blur p-4 flex justify-between items-center">
+<div class="flex items-center gap-3"><div class="w-2 h-2 bg-yellow-400 rounded-full animate-ping"></div><span class="orbit text-yellow-300 font-bold">AGHI</span><span class="text-xs text-gray-400 ml-2">Bharat AGI 3026 Worldwide</span></div>
+<a href="index.html" class="border border-cyan-500/50 text-cyan-400 px-4 py-1 rounded-full text-sm">← Home</a>
+</header>
+
+<div class="max-w-7xl mx-auto px-6 py-8">
+<h1 class="orbit text-3xl md:text-5xl font-extrabold text-center"><span class="text-[#FFD700]">AGHI - Artificial General Human Intelligence</span><br><span class="text-white">+ Agentic AI</span></h1>
+
+<div class="mt-10 grid md:grid-cols-2 gap-8 items-center">
+<div class="relative bg-[#0A1A2F]/60 border border-cyan-500/20 rounded-3xl p-8 flex justify-center">
+<div class="text-8xl animate-pulse">🧠</div>
+<p class="absolute bottom-4 text-xs text-cyan-300">Human + AI Symbiosis • Collaborative • Synergistic • Ethical Partnership</p>
+</div>
+
+<div>
+<h3 class="orbit text-cyan-300 text-sm tracking-widest">AGENTIC WORKFLOW</h3>
+<div class="grid grid-cols-3 gap-3 mt-4">
+<div id="w1" class="bg-[#0F1F3A] border border-yellow-500/50 rounded-2xl p-4 text-center cursor-pointer hover:scale-105 transition" onclick="activate(1)"><div class="text-3xl">🧠</div><div class="font-bold text-yellow-300 mt-2 text-sm">Reasoning</div><div class="text-[10px] text-gray-400 mt-1">Logical analysis<br>→ Self-reflection<br>→ Planning</div></div>
+<div id="w2" class="bg-[#0F1F3A] border border-cyan-500/30 rounded-2xl p-4 text-center opacity-50 cursor-pointer" onclick="activate(2)"><div class="text-3xl">🫂</div><div class="font-bold text-cyan-300 mt-2 text-sm">Empathy</div><div class="text-[10px] text-gray-400 mt-1">Emotional understanding<br>→ Context awareness<br>→ Trust</div></div>
+<div id="w3" class="bg-[#0F1F3A] border border-cyan-500/30 rounded-2xl p-4 text-center opacity-50 cursor-pointer" onclick="activate(3)"><div class="text-3xl">⚙️🚀</div><div class="font-bold text-cyan-300 mt-2 text-sm">Action</div><div class="text-[10px] text-gray-400 mt-1">Autonomous execution<br>→ Real-world interaction<br>→ Adaptive response</div></div>
+</div>
+
+<div class="mt-6 bg-black/60 rounded-xl p-4 border border-yellow-500/20">
+<div class="flex justify-between items-center"><span class="text-xs text-gray-400">Live Agentic Demo - Engineer Farmer Model</span><span id="demoStatus" class="text-xs text-yellow-400">Click Reasoning to start</span></div>
+<div id="demoLog" class="mt-3 text-xs font-mono text-cyan-200 h-24 overflow-auto bg-[#071121] p-3 rounded">> AGHI System Ready...
+> Waiting for task... Farmer: "Fasal me daag hai"
+</div>
+<button onclick="runAgentic()" class="mt-4 bg-yellow-400 text-black font-bold px-6 py-2 rounded-full w-full">▶ RUN AGENTIC CYCLE - Ranchi Farmer Demo</button>
+</div>
+</div>
+</div>
+
+<div class="grid md:grid-cols-4 gap-4 mt-10">
+<div class="bg-[#0A1A2F] border border-yellow-500/30 rounded-xl p-5"><div class="text-xl">💬✨</div><h4 class="font-bold text-yellow-200 mt-2 text-sm">Not just chatbot</h4><p class="text-[11px] text-gray-400 mt-2">Beyond simple Q&A • Proactive decision-making</p></div>
+<div class="bg-[#0A1A2F] border border-yellow-500/30 rounded-xl p-5"><div class="text-xl">🧠🔗</div><h4 class="font-bold text-yellow-200 mt-2 text-sm">Human-like reasoning</h4><p class="text-[11px] text-gray-400 mt-2">Common-sense reasoning • Causal understanding</p></div>
+<div class="bg-[#0A1A2F] border border-cyan-500/30 rounded-xl p-5"><div class="text-xl">🤖</div><h4 class="font-bold text-yellow-200 mt-2 text-sm">Agentic AI acts autonomously</h4><p class="text-[11px] text-gray-400 mt-2">Self-directed goals • Multi-step orchestration</p></div>
+<div class="bg-[#0A1A2F] border border-yellow-500/30 rounded-xl p-5"><div class="text-xl">🧬</div><h4 class="font-bold text-yellow-200 mt-2 text-sm">Genetic Engineering self-evolving</h4><p class="text-[11px] text-gray-400 mt-2">Self-improving architecture • Evolutionary learning</p></div>
+</div>
+
+<footer class="mt-10 border-t border-yellow-500/20 pt-4 flex justify-between text-xs text-gray-500"><span>Human + AI Symbiosis • Collaborative • Synergistic • Ethical Partnership</span><span class="text-yellow-300">BHARAT AGI 3026 • WORLDWIDE</span></footer>
+</div>
+
+<script>
+let current=0;
+function activate(n){
+ for(let i=1;i<=3;i++){document.getElementById('w'+i).classList.add('opacity-50'); document.getElementById('w'+i).classList.remove('border-yellow-500/50','glow');}
+ document.getElementById('w'+n).classList.remove('opacity-50');
+ document.getElementById('w'+n).classList.add('border-yellow-500/50','glow');
+ current=n;
+}
+function runAgentic(){
+ const log=document.getElementById('demoLog');
+ const status=document.getElementById('demoStatus');
+ let steps=[
+  "> Task: Help farmer in Ranchi with crop disease... Language: Nagpuri",
+  "> [Reasoning] Logical analysis: Leaf spots = fungal infection 87% prob",
+  "> [Reasoning] Self-reflection: Need local language, offline <₹5000 solution",
+  "> [Empathy] Emotional: Farmer anxious about yield loss",
+  "> [Empathy] Context: Location Ranchi, Nagpuri, small holder",
+  "> [Action] Autonomous: Generating low-cost nano-spray formula (Dr. Sushant Archive RSHA-ME-1881-1952)",
+  "> [Action] Real-world: Sending to NIT Jamshedpur student robot for mixing",
+  "> ✓ Complete: Farmer gets Nagpuri voice: 'Chinta na karu, dawa lagao' + Student gets data. Engineer + Farmer Co-Creator!"
+ ];
+ log.innerHTML="";
+ let i=0;
+ activate(1);
+ let iv=setInterval(()=>{
+   if(i<steps.length){
+     log.innerHTML+=steps[i]+"<br>";
+     log.scrollTop=log.scrollHeight;
+     if(i==2)activate(1);
+     if(i==4)activate(2);
+     if(i==6)activate(3);
+     status.innerText="Step "+(i+1)+"/"+steps.length;
+     i++;
+   }else{clearInterval(iv); status.innerText="✓ Agentic Cycle Complete - Engineer Farmer Model Success"; }
+ },700);
+}
+</script>
+</body></html>
